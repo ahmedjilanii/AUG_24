@@ -1,0 +1,8 @@
+{
+  "name" : "updateMedicalRecord",
+  "shortDescription" : "Allows a doctor to securely update a patient's medical record with new diagnoses, treatments, and notes.",
+  "description" : "<h4>Overview</h4><p>Enables a doctor to securely update an assigned patient's medical record (EHR) by adding new diagnoses, treatments, prescriptions, and clinical notes. This ensures that patient health information is kept current and accurate.</p><h4>Intended use</h4><p>Called by the doctor-facing UI when a doctor submits changes or additions to a patient's medical record. The parameters include the patient ID, doctor ID, and the new medical record details. It returns the updated medical record or an error if the update fails.</p><h4>Logic</h4><ol><li>Validate the input parameters, ensuring a valid patient ID, doctor ID, and medical record details are provided.</li><li>Verify that the calling doctor is authorized to update records for the specified patient.</li><li>Create a new <code>MedicalRecord</code> entry or update an existing one using <code>ctx.data.create</code> or <code>ctx.data.update</code>, ensuring all PHI is handled securely (e.g., encrypted attributes).</li><li>Audit-log the medical record modification with <code>ctx.audit.log</code>, including the record ID, patient, and doctor.</li><li>Return the updated medical record.</li></ol><h4>Entities</h4><ul><li>MedicalRecord</li><li>Patient</li></ul>",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "doctor" ],
+  "functionName" : "update_medical_record"
+}

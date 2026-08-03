@@ -1,0 +1,95 @@
+{
+  "name" : "Message",
+  "description" : "Secure, encrypted communication between a patient and their assigned doctor.",
+  "acl" : {
+    "admin" : [ "read", "delete" ],
+    "patient" : [ "create", "read", "update" ],
+    "doctor" : [ "create", "read", "update" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "senderId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "pii" : true,
+    "description" : "ID of the user who sent the message (references User.id)."
+  }, {
+    "name" : "receiverId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "pii" : true,
+    "description" : "ID of the user who received the message (references User.id)."
+  }, {
+    "name" : "conversationId",
+    "type" : "string",
+    "length" : 100,
+    "required" : true,
+    "indexed" : true,
+    "description" : "Unique identifier for grouping messages into a conversation thread."
+  }, {
+    "name" : "content",
+    "type" : "text",
+    "required" : true,
+    "pii" : true,
+    "phi" : true,
+    "encrypt" : true,
+    "sensitive" : true,
+    "searchable" : true,
+    "description" : "The encrypted content of the message."
+  }, {
+    "name" : "timestamp",
+    "type" : "timestamp",
+    "required" : true,
+    "indexed" : true,
+    "createOnly" : true,
+    "description" : "The timestamp when the message was sent."
+  }, {
+    "name" : "isRead",
+    "type" : "boolean",
+    "indexed" : true,
+    "defaultValue" : false,
+    "description" : "Indicates if the message has been read by the receiver."
+  }, {
+    "name" : "encryptionStatus",
+    "type" : "string",
+    "length" : 50,
+    "enumValues" : "encrypted,decrypted,error",
+    "defaultValue" : "encrypted",
+    "description" : "The encryption status of the message content."
+  }, {
+    "name" : "messageType",
+    "type" : "string",
+    "length" : 50,
+    "enumValues" : "text,attachment,system_notification",
+    "defaultValue" : "text",
+    "description" : "The type of message being sent."
+  } ]
+}

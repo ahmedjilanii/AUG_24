@@ -1,0 +1,473 @@
+{
+  "title" : "Hospital Management Portal (HMP)",
+  "description" : "A secure, self-service platform enabling patients to manage their health, and providing doctors and administrators with tools to manage clinical operations and system data.",
+  "generatedDisplayName" : "HMP",
+  "generatedDescription" : "The Hospital Management Portal (HMP) is a comprehensive platform designed to streamline hospital operations. It offers secure patient self-service, doctor workflow management, and administrative oversight, ensuring compliance and efficient healthcare delivery.",
+  "personas" : {
+    "title" : "Personas",
+    "items" : [ {
+      "name" : "patient",
+      "description" : "Manages personal profile, schedules appointments, accesses medical records and visit summaries, and communicates securely with doctors.",
+      "_uid_" : "A.1.2.3"
+    }, {
+      "name" : "doctor",
+      "description" : "Manages clinical schedules, views and updates assigned patient medical records (EHR), tracks pending appointment requests, and communicates securely with patients.",
+      "_uid_" : "A.1.2.4"
+    }, {
+      "name" : "admin",
+      "description" : "Manages system users (patients and doctors), oversees all appointment activity, maintains system data integrity, monitors reports, and configures system settings.",
+      "_uid_" : "A.1.2.5"
+    } ],
+    "_uid_" : "A.1.2"
+  },
+  "functionalRequirements" : {
+    "title" : "Functional Requirements",
+    "items" : [ {
+      "title" : "Patient Profile Management",
+      "category" : "Patient Management",
+      "inferred" : false,
+      "description" : "Allow patients to securely update and manage their personal information and contact details within the portal.",
+      "_uid_" : "A.1.6.7"
+    }, {
+      "title" : "Appointment Scheduling Workflow",
+      "category" : "Appointment Management",
+      "inferred" : false,
+      "description" : "Enable patients to request and schedule appointments with doctors, including checking doctor availability, selecting preferred slots, and receiving confirmation.",
+      "_uid_" : "A.1.6.8"
+    }, {
+      "title" : "Medical Record Access Control",
+      "category" : "Medical Records",
+      "inferred" : false,
+      "description" : "Implement logic to ensure patients can only access their own medical records and visit summaries, and doctors can only access records of patients assigned to them.",
+      "_uid_" : "A.1.6.9"
+    }, {
+      "title" : "Doctor Schedule Management",
+      "category" : "Doctor Workflow",
+      "inferred" : false,
+      "description" : "Provide doctors with functionality to manage their clinical availability, set working hours, block time slots, and view their scheduled appointments.",
+      "_uid_" : "A.1.6.10"
+    }, {
+      "title" : "Patient Medical Record Update",
+      "category" : "Medical Records",
+      "inferred" : false,
+      "description" : "Allow doctors to securely update assigned patient medical records (EHR) by adding new diagnoses, treatments, prescriptions, and clinical notes.",
+      "_uid_" : "A.1.6.11"
+    }, {
+      "title" : "Appointment Request Tracking",
+      "category" : "Appointment Management",
+      "inferred" : false,
+      "description" : "Enable doctors to track, review, approve, or decline pending appointment requests from patients.",
+      "_uid_" : "A.1.6.12"
+    }, {
+      "title" : "User Role Assignment",
+      "category" : "User Management",
+      "inferred" : true,
+      "description" : "Allow administrators to assign and manage application-specific roles (Patient, Doctor) for system users, controlling their access and permissions.",
+      "_uid_" : "A.1.6.13"
+    }, {
+      "title" : "Appointment Activity Oversight",
+      "category" : "Administrative",
+      "inferred" : false,
+      "description" : "Provide administrators with a consolidated view and management capabilities for all appointment activities, including scheduling, cancellations, and status changes.",
+      "_uid_" : "A.1.6.14"
+    }, {
+      "title" : "Secure Messaging Channel",
+      "category" : "Communication",
+      "inferred" : false,
+      "description" : "Implement an encrypted, auditable messaging system for confidential communication between patients and their assigned doctors.",
+      "_uid_" : "A.1.6.15"
+    }, {
+      "title" : "PHI Data Encryption",
+      "category" : "Security & Compliance",
+      "inferred" : true,
+      "description" : "Ensure all Protected Health Information (PHI) stored at rest and transmitted within the system is encrypted according to HIPAA and national data protection standards.",
+      "_uid_" : "A.1.6.16"
+    }, {
+      "title" : "Comprehensive Audit Logging",
+      "category" : "Security & Compliance",
+      "inferred" : false,
+      "description" : "Capture and store detailed audit logs for all significant user actions, including logins, PHI access, and record modifications, for security and compliance purposes.",
+      "_uid_" : "A.1.6.17"
+    }, {
+      "title" : "Reporting Data Generation",
+      "category" : "Reporting & Analytics",
+      "inferred" : false,
+      "description" : "Generate aggregated data for administrative reports on appointments, user engagement, and communication metrics.",
+      "_uid_" : "A.1.6.18"
+    }, {
+      "title" : "Data Export Capability",
+      "category" : "Reporting & Analytics",
+      "inferred" : false,
+      "description" : "Provide functionality to export generated report data in CSV and PDF formats for further analysis and compliance tracking.",
+      "_uid_" : "A.1.6.19"
+    }, {
+      "title" : "External System Integration (EHR/LIS/Insurance)",
+      "category" : "Integrations",
+      "inferred" : false,
+      "description" : "Facilitate data exchange with existing hospital systems (EHR, LIS, insurance platforms) via RESTful or FHIR-based APIs.",
+      "_uid_" : "A.1.6.20"
+    }, {
+      "title" : "Webhook Notification Management",
+      "category" : "Integrations",
+      "inferred" : false,
+      "description" : "Configure and send webhook notifications to external systems for specific events such as appointment status changes and new messages.",
+      "_uid_" : "A.1.6.21"
+    }, {
+      "title" : "Configurable System Settings",
+      "category" : "Configuration",
+      "inferred" : false,
+      "description" : "Allow administrators to define and update hospital-specific settings like operating hours, holidays, and general policies.",
+      "_uid_" : "A.1.6.22"
+    }, {
+      "title" : "Patient Data Rights Management",
+      "category" : "Legal & Privacy",
+      "inferred" : false,
+      "description" : "Implement workflows for patients to request and manage their data access, correction, and deletion rights in compliance with privacy laws.",
+      "_uid_" : "A.1.6.23"
+    }, {
+      "title" : "Consent Management",
+      "category" : "Legal & Privacy",
+      "inferred" : false,
+      "description" : "Record and manage patient consent for various legal policies (e.g., Terms of Use, Privacy Policy) and data usage.",
+      "_uid_" : "A.1.6.24"
+    }, {
+      "title" : "AI-Powered Patient Assistance",
+      "category" : "AI & Automation",
+      "inferred" : true,
+      "description" : "Enable patients to interact with an AI assistant for self-service tasks like appointment scheduling, information retrieval, and general portal navigation.",
+      "_uid_" : "A.1.6.25"
+    }, {
+      "title" : "AI-Powered Doctor Assistance",
+      "category" : "AI & Automation",
+      "inferred" : true,
+      "description" : "Provide doctors with an AI assistant to help manage their schedule, quickly retrieve patient information summaries, and draft responses to patient messages.",
+      "_uid_" : "A.1.6.26"
+    }, {
+      "title" : "AI-Powered Administrative Reporting",
+      "category" : "AI & Automation",
+      "inferred" : true,
+      "description" : "Offer administrators an AI assistant to generate custom reports and analyze operational data, providing insights into hospital operations.",
+      "_uid_" : "A.1.6.27"
+    } ],
+    "_uid_" : "A.1.6"
+  },
+  "entityModel" : {
+    "title" : "Entity Model",
+    "items" : [ {
+      "name" : "Patient",
+      "description" : "Represents a patient registered in the Hospital Management Portal.",
+      "keyAttributes" : [ "firstName", "lastName", "dateOfBirth", "contactEmail", "contactPhone", "address", "medicalHistorySummary" ],
+      "relationships" : [ "Has many Appointments", "Has many MedicalRecords", "Has many Messages (with Doctor)", "Has many ConsentRecords" ],
+      "_uid_" : "A.1.28.29"
+    }, {
+      "name" : "Doctor",
+      "description" : "Represents a medical professional providing care within the hospital.",
+      "keyAttributes" : [ "firstName", "lastName", "specialty", "contactEmail", "contactPhone", "clinicalSchedule" ],
+      "relationships" : [ "Has many Appointments", "Has many MedicalRecords (authored by)", "Has many Messages (with Patient)" ],
+      "_uid_" : "A.1.28.30"
+    }, {
+      "name" : "Appointment",
+      "description" : "Represents a scheduled or requested patient appointment with a doctor.",
+      "keyAttributes" : [ "patientId", "doctorId", "dateTime", "status", "reasonForVisit", "notes" ],
+      "relationships" : [ "Belongs to Patient", "Belongs to Doctor" ],
+      "_uid_" : "A.1.28.31"
+    }, {
+      "name" : "MedicalRecord",
+      "description" : "Stores a patient's electronic health record entries, including visit details, diagnoses, treatments, and prescriptions.",
+      "keyAttributes" : [ "patientId", "doctorId", "visitDate", "diagnosis", "treatment", "prescription", "notes", "attachments" ],
+      "relationships" : [ "Belongs to Patient", "Belongs to Doctor", "Has many File2 (for attachments)" ],
+      "_uid_" : "A.1.28.32"
+    }, {
+      "name" : "Message",
+      "description" : "Secure, encrypted communication between a patient and their assigned doctor.",
+      "keyAttributes" : [ "senderId", "receiverId", "conversationId", "content", "timestamp", "isRead", "encryptionStatus" ],
+      "relationships" : [ "Belongs to User (sender)", "Belongs to User (receiver)" ],
+      "_uid_" : "A.1.28.33"
+    }, {
+      "name" : "HospitalSetting",
+      "description" : "Stores configurable settings for the hospital, such as operating hours, holidays, and general policies.",
+      "keyAttributes" : [ "settingKey", "settingValue", "description" ],
+      "relationships" : [ ],
+      "inferred" : true,
+      "_uid_" : "A.1.28.34"
+    }, {
+      "name" : "ConsentRecord",
+      "description" : "Records patient consent for various policies (Terms of Use, Privacy Policy) and data access rights.",
+      "keyAttributes" : [ "patientId", "consentType", "consentDate", "version", "status" ],
+      "relationships" : [ "Belongs to Patient" ],
+      "inferred" : true,
+      "_uid_" : "A.1.28.35"
+    } ],
+    "_uid_" : "A.1.28"
+  },
+  "functions" : {
+    "title" : "Serverless Functions",
+    "items" : [ {
+      "name" : "scheduleAppointment",
+      "type" : "workflow",
+      "trigger" : {
+        "type" : "http",
+        "_uid_" : "A.1.36.37.38"
+      },
+      "description" : "Handles the multi-step process of a patient requesting an appointment, checking doctor availability, and confirming the booking.",
+      "entities" : [ "Appointment", "Doctor", "HospitalSetting" ],
+      "externalServices" : [ ],
+      "_uid_" : "A.1.36.37"
+    }, {
+      "name" : "updateMedicalRecord",
+      "type" : "workflow",
+      "trigger" : {
+        "type" : "http",
+        "_uid_" : "A.1.36.39.40"
+      },
+      "description" : "Allows a doctor to securely update a patient's medical record, including adding diagnoses, treatments, and notes.",
+      "entities" : [ "MedicalRecord", "Patient" ],
+      "externalServices" : [ ],
+      "_uid_" : "A.1.36.39"
+    }, {
+      "name" : "sendSecureMessage",
+      "type" : "workflow",
+      "trigger" : {
+        "type" : "http",
+        "_uid_" : "A.1.36.41.42"
+      },
+      "description" : "Manages the sending and encryption of messages between patients and their assigned doctors, ensuring auditable communication.",
+      "entities" : [ "Message", "User" ],
+      "externalServices" : [ "WebhookService" ],
+      "_uid_" : "A.1.36.41"
+    }, {
+      "name" : "getDoctorAvailability",
+      "type" : "query",
+      "trigger" : {
+        "type" : "http",
+        "_uid_" : "A.1.36.43.44"
+      },
+      "description" : "Retrieves a doctor's available slots based on their clinical schedule and existing appointments.",
+      "entities" : [ "Doctor", "Appointment", "HospitalSetting" ],
+      "externalServices" : [ ],
+      "_uid_" : "A.1.36.43"
+    }, {
+      "name" : "exportReportData",
+      "type" : "http",
+      "trigger" : {
+        "type" : "http",
+        "_uid_" : "A.1.36.45.46"
+      },
+      "description" : "Generates and provides downloadable reports (CSV/PDF) based on appointment, user, or communication metrics for administrators.",
+      "entities" : [ "Appointment", "User", "Message", "MedicalRecord" ],
+      "externalServices" : [ ],
+      "_uid_" : "A.1.36.45"
+    }, {
+      "name" : "sendAppointmentNotificationWebhook",
+      "type" : "trigger",
+      "trigger" : {
+        "type" : "post-save",
+        "entity" : "Appointment",
+        "event" : "create, update",
+        "_uid_" : "A.1.36.47.48"
+      },
+      "description" : "Sends a webhook notification to external systems when an appointment is created, updated, or cancelled.",
+      "entities" : [ "Appointment" ],
+      "externalServices" : [ "WebhookService" ],
+      "_uid_" : "A.1.36.47"
+    }, {
+      "name" : "sendNewMessageNotificationWebhook",
+      "type" : "trigger",
+      "trigger" : {
+        "type" : "post-save",
+        "entity" : "Message",
+        "event" : "create",
+        "_uid_" : "A.1.36.49.50"
+      },
+      "description" : "Sends a webhook notification to external systems when a new secure message is sent between a patient and doctor.",
+      "entities" : [ "Message" ],
+      "externalServices" : [ "WebhookService" ],
+      "_uid_" : "A.1.36.49"
+    }, {
+      "name" : "syncEHRData",
+      "type" : "integration",
+      "trigger" : {
+        "type" : "cron",
+        "_uid_" : "A.1.36.51.52"
+      },
+      "description" : "Synchronizes patient medical records with an external Electronic Health Record (EHR) system.",
+      "entities" : [ "MedicalRecord", "Patient" ],
+      "externalServices" : [ "EHRSystem" ],
+      "_uid_" : "A.1.36.51"
+    }, {
+      "name" : "syncLISData",
+      "type" : "integration",
+      "trigger" : {
+        "type" : "cron",
+        "_uid_" : "A.1.36.53.54"
+      },
+      "description" : "Synchronizes lab information and results with an external Laboratory Information System (LIS).",
+      "entities" : [ "MedicalRecord" ],
+      "externalServices" : [ "LISSystem" ],
+      "_uid_" : "A.1.36.53"
+    }, {
+      "name" : "syncInsuranceData",
+      "type" : "integration",
+      "trigger" : {
+        "type" : "cron",
+        "_uid_" : "A.1.36.55.56"
+      },
+      "description" : "Exchanges patient insurance details and eligibility information with an external insurance platform.",
+      "entities" : [ "Patient" ],
+      "externalServices" : [ "InsurancePlatform" ],
+      "_uid_" : "A.1.36.55"
+    }, {
+      "name" : "managePatientDataRights",
+      "type" : "workflow",
+      "trigger" : {
+        "type" : "http",
+        "_uid_" : "A.1.36.57.58"
+      },
+      "description" : "Handles patient requests for accessing, correcting, or deleting their personal and medical data in compliance with privacy regulations.",
+      "entities" : [ "Patient", "MedicalRecord", "ConsentRecord" ],
+      "externalServices" : [ ],
+      "_uid_" : "A.1.36.57"
+    }, {
+      "name" : "recordPatientConsent",
+      "type" : "workflow",
+      "trigger" : {
+        "type" : "http",
+        "_uid_" : "A.1.36.59.60"
+      },
+      "description" : "Records and updates patient consent for various legal policies (e.g., Terms of Use, Privacy Policy) and data usage.",
+      "entities" : [ "ConsentRecord", "Patient" ],
+      "externalServices" : [ ],
+      "_uid_" : "A.1.36.59"
+    }, {
+      "name" : "getPatientMedicalRecordSummary",
+      "type" : "query",
+      "trigger" : {
+        "type" : "http",
+        "_uid_" : "A.1.36.61.62"
+      },
+      "description" : "Retrieves a summarized version of a patient's medical record, ensuring only authorized access for the requesting user (patient themselves or assigned doctor).",
+      "entities" : [ "Patient", "MedicalRecord" ],
+      "externalServices" : [ ],
+      "_uid_" : "A.1.36.61"
+    } ],
+    "_uid_" : "A.1.36"
+  },
+  "externalIntegrations" : {
+    "title" : "External Integrations",
+    "items" : [ {
+      "name" : "EHRSystem",
+      "type" : "other",
+      "description" : "Integrates with the hospital's existing Electronic Health Record system for comprehensive patient data exchange (e.g., FHIR-based APIs).",
+      "_uid_" : "A.1.63.64"
+    }, {
+      "name" : "LISSystem",
+      "type" : "other",
+      "description" : "Integrates with the hospital's Laboratory Information System for lab results and orders.",
+      "_uid_" : "A.1.63.65"
+    }, {
+      "name" : "InsurancePlatform",
+      "type" : "other",
+      "description" : "Connects with insurance providers for patient eligibility verification and claims processing.",
+      "_uid_" : "A.1.63.66"
+    }, {
+      "name" : "WebhookService",
+      "type" : "messaging",
+      "description" : "Sends real-time notifications to other systems about key events (e.g., appointment status changes, new messages).",
+      "_uid_" : "A.1.63.67"
+    } ],
+    "_uid_" : "A.1.63"
+  },
+  "aiAgents" : {
+    "title" : "AI Agents",
+    "items" : [ {
+      "name" : "patientAssistantAgent",
+      "description" : "An AI assistant for patients to help them navigate the portal, schedule appointments, and answer general questions about their health records (without providing medical advice).",
+      "tools" : [ "scheduleAppointment", "getDoctorAvailability", "getPatientMedicalRecordSummary" ],
+      "_uid_" : "A.1.68.69"
+    }, {
+      "name" : "doctorAssistantAgent",
+      "description" : "An AI assistant for doctors to help manage their schedule, quickly retrieve patient information summaries, and draft responses to patient messages.",
+      "tools" : [ "getDoctorAvailability", "getPatientMedicalRecordSummary", "sendSecureMessage" ],
+      "_uid_" : "A.1.68.70"
+    }, {
+      "name" : "adminReportingAgent",
+      "description" : "An AI assistant for administrators to generate custom reports, analyze system metrics, and gain insights into hospital operations.",
+      "tools" : [ "exportReportData" ],
+      "_uid_" : "A.1.68.71"
+    } ],
+    "_uid_" : "A.1.68"
+  },
+  "ui" : {
+    "title" : "User Interface — high-level modules",
+    "items" : [ {
+      "title" : "Patient Dashboard",
+      "description" : "Provides patients with an overview of their profile, upcoming appointments, medical history, and secure messages. Allows them to schedule appointments and update personal information. Used by: patient.",
+      "_uid_" : "A.1.72.73"
+    }, {
+      "title" : "Doctor Dashboard",
+      "description" : "Offers doctors a view of their clinical schedule, pending appointment requests, and access to their assigned patients' medical records and secure messages. Used by: doctor.",
+      "_uid_" : "A.1.72.74"
+    }, {
+      "title" : "Admin Dashboard",
+      "description" : "Presents administrators with tools for user management (patients, doctors), oversight of all appointment activities, and access to system reports and configuration. Used by: admin.",
+      "_uid_" : "A.1.72.75"
+    }, {
+      "title" : "Secure Messaging Module",
+      "description" : "Facilitates encrypted, auditable communication between patients and their assigned doctors, integrated within their respective dashboards. Used by: patient, doctor.",
+      "_uid_" : "A.1.72.76"
+    }, {
+      "title" : "Reporting & Analytics Module",
+      "description" : "Provides administrators with configurable dashboards and the ability to generate and export reports on system metrics like appointments and user engagement. Used by: admin.",
+      "_uid_" : "A.1.72.77"
+    }, {
+      "title" : "System Configuration Module",
+      "description" : "Allows administrators to manage hospital-specific settings, such as operating hours, holidays, and general policies. Used by: admin.",
+      "_uid_" : "A.1.72.78"
+    }, {
+      "title" : "Consent Management Module",
+      "description" : "Enables patients to review and manage their consent for Terms of Use, Privacy Policy, and data access rights. Used by: patient.",
+      "_uid_" : "A.1.72.79"
+    }, {
+      "title" : "AI Assistant Interface",
+      "description" : "Provides a chat-based interface for users (patients, doctors, admins) to interact with their respective AI assistants, leveraging the available tools. Used by: patient, doctor, admin.",
+      "_uid_" : "A.1.72.80"
+    } ],
+    "_uid_" : "A.1.72"
+  },
+  "onboardingMatrix" : {
+    "title" : "Onboarding",
+    "items" : [ {
+      "role" : "user",
+      "appRole" : "patient",
+      "added" : true,
+      "signup" : true,
+      "requiresAdminApproval" : false,
+      "inferred" : true,
+      "_uid_" : "A.1.81.82"
+    }, {
+      "role" : "user",
+      "appRole" : "doctor",
+      "added" : true,
+      "signup" : false,
+      "requiresAdminApproval" : false,
+      "_uid_" : "A.1.81.83"
+    }, {
+      "role" : "admin",
+      "appRole" : "admin",
+      "added" : true,
+      "signup" : false,
+      "requiresAdminApproval" : false,
+      "_uid_" : "A.1.81.84"
+    } ],
+    "_uid_" : "A.1.81"
+  },
+  "miscInfo" : {
+    "multiTenant" : true,
+    "deliversAPIEndpoints" : true,
+    "requiresDB" : true,
+    "requiresAuthentication" : true,
+    "requiresUserManagement" : true,
+    "_uid_" : "A.1.85"
+  },
+  "_uid_" : "A.1"
+}

@@ -1,0 +1,8 @@
+{
+  "name" : "syncInsuranceData",
+  "shortDescription" : "Exchanges patient insurance details and eligibility information with an external insurance platform.",
+  "description" : "<h4>Overview</h4><p>Exchanges patient insurance details and eligibility information with an external insurance platform. This helps in verifying patient coverage and streamlining billing processes.</p><h4>Intended use</h4><p>This function is intended to be invoked by a scheduler (cron job) to periodically synchronize data with the <code>InsurancePlatform</code>. It does not require specific parameters for invocation.</p><h4>Logic</h4><ol><li>Call the <code>InsurancePlatform</code> external service using <code>ctx.service('InsurancePlatform')</code> to fetch or send patient insurance details.</li><li>Iterate through the retrieved insurance data or prepare data to be sent.</li><li>Update <code>Patient</code> records with new insurance information or eligibility status using <code>ctx.data.update</code>.</li><li>Audit-log the synchronization process with <code>ctx.audit.log</code>, noting any updates or new records.</li></ol><h4>Entities</h4><ul><li>Patient</li></ul><h4>External Services</h4><ul><li>InsurancePlatform</li></ul>",
+  "invocationMode" : "scheduled",
+  "allowedAppRoles" : [ "system" ],
+  "functionName" : "sync_insurance_data"
+}

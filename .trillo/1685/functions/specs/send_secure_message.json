@@ -1,0 +1,8 @@
+{
+  "name" : "sendSecureMessage",
+  "shortDescription" : "Manages sending encrypted messages between patients and doctors, ensuring auditable communication and webhook notifications.",
+  "description" : "<h4>Overview</h4><p>Manages the sending and encryption of messages between patients and their assigned doctors, ensuring auditable communication. It also triggers a webhook notification to external systems upon message creation.</p><h4>Intended use</h4><p>Called by the secure messaging UI when a patient or doctor sends a new message. The parameters include sender ID, receiver ID, conversation ID, and message content. It returns the created message record or an error if sending fails.</p><h4>Logic</h4><ol><li>Validate the input parameters, ensuring valid sender, receiver, and message content.</li><li>Verify that the sender and receiver are authorized to communicate (e.g., assigned doctor-patient relationship).</li><li>Encrypt the message <code>content</code> before persistence.</li><li>Create a new <code>Message</code> record using <code>ctx.data.create</code>, setting <code>encryptionStatus</code> to 'encrypted'.</li><li>Construct a payload with message details and send a webhook notification to the <code>WebhookService</code> using <code>ctx.service('WebhookService').send_notification</code>.</li><li>Audit-log the message sending with <code>ctx.audit.log</code>, including sender, receiver, and message ID.</li><li>Return the created message record.</li></ol><h4>Entities</h4><ul><li>Message</li><li>User</li></ul><h4>External Services</h4><ul><li>WebhookService</li></ul>",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "patient", "doctor" ],
+  "functionName" : "send_secure_message"
+}

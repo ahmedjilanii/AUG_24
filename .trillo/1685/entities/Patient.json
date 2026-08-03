@@ -1,0 +1,112 @@
+{
+  "name" : "Patient",
+  "description" : "Represents a patient registered in the Hospital Management Portal.",
+  "ownership" : "user",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "patient" : [ "read", "update" ],
+    "doctor" : [ "read" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "idOfUser",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "representsOwnership" : true,
+    "createOnly" : true,
+    "description" : "Owning patient's User ID. Set automatically on create from the authenticated user; only the owning patient or an admin/doctor may update/delete."
+  }, {
+    "name" : "firstName",
+    "type" : "string",
+    "length" : 100,
+    "required" : true,
+    "pii" : true,
+    "naming" : true,
+    "searchable" : true,
+    "description" : "The patient's first name."
+  }, {
+    "name" : "lastName",
+    "type" : "string",
+    "length" : 100,
+    "required" : true,
+    "pii" : true,
+    "searchable" : true,
+    "description" : "The patient's last name."
+  }, {
+    "name" : "dateOfBirth",
+    "type" : "date",
+    "required" : true,
+    "pii" : true,
+    "description" : "The patient's date of birth."
+  }, {
+    "name" : "contactEmail",
+    "type" : "string",
+    "length" : 255,
+    "required" : true,
+    "unique" : true,
+    "pii" : true,
+    "pattern" : "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$",
+    "description" : "The patient's primary contact email address."
+  }, {
+    "name" : "contactPhone",
+    "type" : "string",
+    "length" : 20,
+    "pii" : true,
+    "description" : "The patient's primary contact phone number."
+  }, {
+    "name" : "address",
+    "type" : "text",
+    "pii" : true,
+    "listHidden" : true,
+    "description" : "The patient's residential address."
+  }, {
+    "name" : "medicalHistorySummary",
+    "type" : "text",
+    "phi" : true,
+    "encrypt" : true,
+    "sensitive" : true,
+    "listHidden" : true,
+    "description" : "A summary of the patient's medical history."
+  }, {
+    "name" : "status",
+    "type" : "string",
+    "length" : 50,
+    "indexed" : true,
+    "enumValues" : "active,inactive,onboarded",
+    "defaultValue" : "onboarded",
+    "description" : "The current status of the patient's profile."
+  }, {
+    "name" : "registrationDate",
+    "type" : "date",
+    "createOnly" : true,
+    "indexed" : true,
+    "description" : "The date when the patient registered in the portal."
+  } ]
+}
