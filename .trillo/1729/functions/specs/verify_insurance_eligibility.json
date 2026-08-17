@@ -1,0 +1,8 @@
+{
+  "name" : "verifyInsuranceEligibility",
+  "shortDescription" : "Calls an external insurance platform to verify patient eligibility or submit claims, returning the verification status.",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "patient", "admin" ],
+  "description" : "<h4>Overview</h4><p>Interacts with an external insurance platform to verify a patient's eligibility for services or to submit claims. This function provides real-time checks and can be used during appointment booking or administrative processes.</p><h4>Intended use</h4><p>Called by the UI (e.g., during appointment scheduling or patient registration) to check insurance eligibility.</p><h4>Logic</h4><ol><li>Validate input parameters, including <code>patientProfileId</code> and optionally <code>appointmentId</code>.</li><li>Retrieve PatientProfile data (e.g., insurance details) using <code>ctx.data.get</code>.</li><li>Call the external InsurancePlatform API (e.g., <code>ctx.service('InsurancePlatform').check_eligibility(patient_data)</code>) to perform the verification.</li><li>Process the response from the insurance platform.</li><li>Audit-log the eligibility check using <code>ctx.audit.log</code>.</li><li>Return the eligibility status and any relevant details.</li></ol><h4>Entities</h4><ul><li>PatientProfile</li><li>Appointment</li></ul><h4>External Services</h4><ul><li>InsurancePlatform</li></ul>",
+  "functionName" : "verify_insurance_eligibility"
+}

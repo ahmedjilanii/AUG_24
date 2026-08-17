@@ -1,0 +1,9 @@
+{
+  "name" : "syncLISData",
+  "shortDescription" : "Integrates with an external Laboratory Information System (LIS) to retrieve and update lab results associated with patient medical records.",
+  "invocationMode" : "event",
+  "allowedAppRoles" : [ ],
+  "description" : "<h4>Overview</h4><p>Integrates with an external Laboratory Information System (LIS) to retrieve and update lab results. This function is typically triggered by an event or a scheduled job to fetch new lab results and associate them with the corresponding patient medical records.</p><h4>Intended use</h4><p>Invoked by an event listener or a scheduled job to synchronize lab results from an external LIS system.</p><h4>Logic</h4><ol><li>Receive event parameters, typically including <code>patientProfileId</code> or a lab order ID.</li><li>Call the external LISSystem API (e.g., <code>ctx.service('LISSystem').get_lab_results(patient_id)</code>) to retrieve lab results.</li><li>Process the retrieved lab results and create or update MedicalRecord entries (e.g., <code>recordType: 'lab_result'</code>) for the patient using <code>ctx.data.create</code> or <code>ctx.data.update</code>.</li><li>Audit-log the integration event using <code>ctx.audit.log</code>.</li><li>Return success or error status.</li></ol><h4>Entities</h4><ul><li>MedicalRecord</li><li>PatientProfile</li></ul><h4>External Services</h4><ul><li>LISSystem</li></ul>",
+  "role" : "system",
+  "functionName" : "sync_lis_data"
+}

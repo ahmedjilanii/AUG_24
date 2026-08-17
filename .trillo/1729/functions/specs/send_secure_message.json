@@ -1,0 +1,8 @@
+{
+  "name" : "sendSecureMessage",
+  "shortDescription" : "Facilitates secure, encrypted, and auditable communication between patients and their assigned doctors, with webhook notifications.",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "patient", "doctor" ],
+  "description" : "<h4>Overview</h4><p>Handles the sending of secure, encrypted messages between patients and doctors. It ensures messages are properly linked to relevant patient and doctor entities, are auditable, and triggers webhook notifications upon creation.</p><h4>Intended use</h4><p>Called by the secure messaging interface within the patient portal or doctor dashboard when a user sends a new message.</p><h4>Logic</h4><ol><li>Validate input parameters, including <code>senderId</code>, <code>receiverId</code>, and <code>content</code>.</li><li>Retrieve sender (PatientProfile or DoctorProfile) and receiver (PatientProfile or DoctorProfile) to ensure valid participants.</li><li>Create a new Message record with the provided content, linking it to the sender, receiver, and optionally an <code>appointmentId</code>. The <code>content</code> attribute is encrypted by the platform.</li><li>Send a webhook notification to external endpoints about the new message using <code>ctx.webhook.send</code>.</li><li>Audit-log the message creation using <code>ctx.audit.log</code>.</li><li>Return the created Message record.</li></ol><h4>Entities</h4><ul><li>Message</li><li>PatientProfile</li><li>DoctorProfile</li></ul><h4>External Services</h4><ul><li>OutboundWebhook</li></ul>",
+  "functionName" : "send_secure_message"
+}

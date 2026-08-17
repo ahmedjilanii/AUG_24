@@ -1,0 +1,119 @@
+{
+  "name" : "PatientProfile",
+  "description" : "Represents the personal and demographic information of a patient.",
+  "ownership" : "user",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "patient" : [ "read", "update" ],
+    "doctor" : [ "read" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "tenantId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "description" : "Tenant ID for multi-tenancy."
+  }, {
+    "name" : "idOfUser",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "representsOwnership" : true,
+    "createOnly" : true,
+    "description" : "Owning patient — set automatically on create from the authenticated user; only the owning patient or an admin may update/delete."
+  }, {
+    "name" : "firstName",
+    "type" : "string",
+    "length" : 100,
+    "required" : true,
+    "pii" : true,
+    "searchable" : true,
+    "description" : "Patient's first name."
+  }, {
+    "name" : "lastName",
+    "type" : "string",
+    "length" : 100,
+    "required" : true,
+    "pii" : true,
+    "searchable" : true,
+    "description" : "Patient's last name."
+  }, {
+    "name" : "dateOfBirth",
+    "type" : "date",
+    "required" : true,
+    "pii" : true,
+    "description" : "Patient's date of birth."
+  }, {
+    "name" : "contactNumber",
+    "type" : "string",
+    "length" : 20,
+    "pii" : true,
+    "description" : "Patient's primary contact number."
+  }, {
+    "name" : "email",
+    "type" : "string",
+    "length" : 255,
+    "required" : true,
+    "unique" : true,
+    "pii" : true,
+    "pattern" : "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$",
+    "description" : "Patient's email address."
+  }, {
+    "name" : "address",
+    "type" : "text",
+    "pii" : true,
+    "description" : "Patient's residential address."
+  }, {
+    "name" : "emergencyContactName",
+    "type" : "string",
+    "length" : 100,
+    "pii" : true,
+    "description" : "Name of emergency contact."
+  }, {
+    "name" : "emergencyContactNumber",
+    "type" : "string",
+    "length" : 20,
+    "pii" : true,
+    "description" : "Phone number of emergency contact."
+  }, {
+    "name" : "gender",
+    "type" : "string",
+    "length" : 10,
+    "pii" : true,
+    "enumValues" : "male,female,other,prefer_not_to_say",
+    "description" : "Patient's gender."
+  }, {
+    "name" : "bloodType",
+    "type" : "string",
+    "length" : 5,
+    "phi" : true,
+    "description" : "Patient's blood type."
+  } ]
+}

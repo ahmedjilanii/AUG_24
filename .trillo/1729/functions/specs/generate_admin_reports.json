@@ -1,0 +1,9 @@
+{
+  "name" : "generateAdminReports",
+  "shortDescription" : "Aggregates and processes data from various entities to generate configurable administrative reports with export capabilities.",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "admin" ],
+  "description" : "<h4>Overview</h4><p>Aggregates and processes data related to appointments, user engagement, and communication metrics to generate configurable reports for administrators. The function supports various report types and can prepare data for export (e.g., CSV/PDF).</p><h4>Intended use</h4><p>Called by the admin dashboard UI when an administrator requests to generate a report.</p><h4>Logic</h4><ol><li>Receive parameters specifying the report type (e.g., 'appointment_summary', 'patient_demographics'), date range, and filters.</li><li>Query Appointment, PatientProfile, DoctorProfile, and Message entities using <code>ctx.data.query</code> or <code>ctx.data.list</code> based on the report type and filters.</li><li>Aggregate and process the retrieved data (e.g., count appointments by status, summarize patient demographics, calculate message volume).</li><li>Format the aggregated data into a structured output suitable for display or export.</li><li>Audit-log the report generation using <code>ctx.audit.log</code>.</li><li>Return the generated report data.</li></ol><h4>Entities</h4><ul><li>Appointment</li><li>PatientProfile</li><li>DoctorProfile</li><li>Message</li></ul>",
+  "role" : "admin",
+  "functionName" : "generate_admin_reports"
+}

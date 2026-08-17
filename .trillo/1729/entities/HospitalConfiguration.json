@@ -1,0 +1,80 @@
+{
+  "name" : "HospitalConfiguration",
+  "description" : "Stores system-wide configurable settings for the hospital, such as operating hours and holidays.",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "patient" : [ "read" ],
+    "doctor" : [ "read" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "tenantId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "unique" : true,
+    "description" : "Tenant ID for multi-tenancy. Unique per tenant as this is a singleton."
+  }, {
+    "name" : "hospitalName",
+    "type" : "string",
+    "length" : 255,
+    "required" : true,
+    "naming" : true,
+    "searchable" : true,
+    "description" : "Official name of the hospital."
+  }, {
+    "name" : "operatingHoursJson",
+    "type" : "text",
+    "description" : "JSON string defining daily operating hours."
+  }, {
+    "name" : "holidaysJson",
+    "type" : "text",
+    "description" : "JSON string listing hospital holidays."
+  }, {
+    "name" : "policiesJson",
+    "type" : "text",
+    "description" : "JSON string containing various hospital policies."
+  }, {
+    "name" : "address",
+    "type" : "string",
+    "length" : 255,
+    "description" : "Hospital's physical address."
+  }, {
+    "name" : "contactPhone",
+    "type" : "string",
+    "length" : 20,
+    "description" : "Hospital's main contact phone number."
+  }, {
+    "name" : "contactEmail",
+    "type" : "string",
+    "length" : 255,
+    "pattern" : "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$",
+    "description" : "Hospital's main contact email address."
+  } ]
+}

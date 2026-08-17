@@ -1,0 +1,9 @@
+{
+  "name" : "syncEHRData",
+  "shortDescription" : "Integrates with an external EHR system to exchange patient medical data, ensuring consistency and compliance with FHIR standards.",
+  "invocationMode" : "event",
+  "allowedAppRoles" : [ ],
+  "description" : "<h4>Overview</h4><p>Integrates with an external Electronic Health Record (EHR) system to exchange patient medical data. This function is typically triggered by an event (e.g., a new medical record entry or an update) and ensures data consistency and compliance with FHIR standards where applicable.</p><h4>Intended use</h4><p>Invoked by an event listener (e.g., <code>onMedicalRecordUpdate</code>) or a scheduled job to synchronize data with an external EHR system.</p><h4>Logic</h4><ol><li>Receive event parameters, typically including <code>medicalRecordId</code> or <code>patientProfileId</code>.</li><li>Retrieve the relevant MedicalRecord and PatientProfile data using <code>ctx.data.get</code>.</li><li>Call the external EHRSystem API (e.g., <code>ctx.service('EHRSystem').push_medical_data(patient_data, medical_record_data)</code>) to push or pull data. Handle API responses and potential errors.</li><li>Update local MedicalRecord or PatientProfile entities if data was pulled from the EHR system.</li><li>Audit-log the integration event using <code>ctx.audit.log</code>.</li><li>Return success or error status.</li></ol><h4>Entities</h4><ul><li>MedicalRecord</li><li>PatientProfile</li></ul><h4>External Services</h4><ul><li>EHRSystem</li></ul>",
+  "role" : "system",
+  "functionName" : "sync_ehr_data"
+}

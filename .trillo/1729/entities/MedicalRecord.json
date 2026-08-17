@@ -1,0 +1,105 @@
+{
+  "name" : "MedicalRecord",
+  "description" : "Represents a patient's medical history, including diagnoses, treatments, and visit summaries.",
+  "ownership" : "user",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "patient" : [ "read" ],
+    "doctor" : [ "create", "read", "update" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "tenantId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "description" : "Tenant ID for multi-tenancy."
+  }, {
+    "name" : "idOfUser",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "representsOwnership" : true,
+    "createOnly" : true,
+    "description" : "Owning patient — set automatically from the associated patient; only the owning patient or an admin/doctor may access."
+  }, {
+    "name" : "patientProfileId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "phi" : true,
+    "description" : "Foreign key to the PatientProfile entity."
+  }, {
+    "name" : "doctorProfileId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "description" : "Foreign key to the DoctorProfile entity who created/updated this record."
+  }, {
+    "name" : "recordDate",
+    "type" : "date",
+    "required" : true,
+    "indexed" : true,
+    "description" : "Date when this medical record entry was created or updated."
+  }, {
+    "name" : "diagnosis",
+    "type" : "text",
+    "required" : true,
+    "phi" : true,
+    "searchable" : true,
+    "description" : "Patient's diagnosis."
+  }, {
+    "name" : "treatment",
+    "type" : "text",
+    "phi" : true,
+    "searchable" : true,
+    "listHidden" : true,
+    "description" : "Treatment plan provided."
+  }, {
+    "name" : "medications",
+    "type" : "text",
+    "phi" : true,
+    "searchable" : true,
+    "listHidden" : true,
+    "description" : "Medications prescribed."
+  }, {
+    "name" : "visitSummary",
+    "type" : "text",
+    "phi" : true,
+    "searchable" : true,
+    "listHidden" : true,
+    "description" : "Summary of the patient's visit."
+  }, {
+    "name" : "recordType",
+    "type" : "string",
+    "length" : 50,
+    "enumValues" : "diagnosis,prescription,lab_result,visit_note,immunization",
+    "description" : "Type of medical record entry."
+  } ]
+}

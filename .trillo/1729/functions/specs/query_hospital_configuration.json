@@ -1,0 +1,8 @@
+{
+  "name" : "queryHospitalConfiguration",
+  "shortDescription" : "Retrieves hospital-wide configuration details such as operating hours, holidays, and general policies for display in the UI.",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "patient", "doctor", "admin" ],
+  "description" : "<h4>Overview</h4><p>Fetches hospital-wide configuration details, including operating hours, holidays, and general policies. This information is typically read-only and displayed across various parts of the application.</p><h4>Intended use</h4><p>Called by any UI component (patient portal, doctor dashboard, admin dashboard) that needs to display general hospital information.</p><h4>Logic</h4><ol><li>Retrieve the singleton HospitalConfiguration record using <code>ctx.data.get</code>.</li><li>Return the HospitalConfiguration data.</li></ol><h4>Entities</h4><ul><li>HospitalConfiguration</li></ul>",
+  "functionName" : "query_hospital_configuration"
+}

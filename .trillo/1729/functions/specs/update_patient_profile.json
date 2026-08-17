@@ -1,0 +1,8 @@
+{
+  "name" : "updatePatientProfile",
+  "shortDescription" : "Allows patients to securely update their personal profile information, including contact details and demographic data, with validation.",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "patient", "admin" ],
+  "description" : "<h4>Overview</h4><p>Enables patients to manage and update their personal profile information, such as contact details, emergency contacts, and demographic data. It includes validation to ensure data integrity and format compliance.</p><h4>Intended use</h4><p>Called by the patient portal UI when a patient submits changes to their profile. Also callable by administrators to update patient profiles.</p><h4>Logic</h4><ol><li>Retrieve the existing PatientProfile record for the authenticated user using <code>ctx.data.get</code>.</li><li>Validate the incoming <code>params</code> against business rules (e.g., date formats, required fields, email uniqueness if changed). Return an error if validation fails.</li><li>Update the PatientProfile record with the provided data using <code>ctx.data.update</code>.</li><li>Audit-log the profile update using <code>ctx.audit.log</code>.</li><li>Return the updated PatientProfile.</li></ol><h4>Entities</h4><ul><li>PatientProfile</li></ul>",
+  "functionName" : "update_patient_profile"
+}

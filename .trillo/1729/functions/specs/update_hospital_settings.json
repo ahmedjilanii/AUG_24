@@ -1,0 +1,9 @@
+{
+  "name" : "updateHospitalSettings",
+  "shortDescription" : "Allows administrators to configure system-wide settings such as operating hours, holidays, and policies, with an auditable record of changes.",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "admin" ],
+  "description" : "<h4>Overview</h4><p>Provides functionality for hospital administrators to update system-wide configuration settings. This includes managing hospital operating hours, holidays, and various policies, ensuring that all changes are auditable.</p><h4>Intended use</h4><p>Called by the admin dashboard UI when an administrator modifies hospital configuration settings.</p><h4>Logic</h4><ol><li>Validate input parameters for <code>hospitalName</code>, <code>operatingHoursJson</code>, <code>holidaysJson</code>, <code>policiesJson</code>, etc.</li><li>Retrieve the singleton HospitalConfiguration record using <code>ctx.data.get</code>.</li><li>Update the HospitalConfiguration record with the new settings using <code>ctx.data.update</code>.</li><li>Audit-log the configuration change, including details of what was updated, using <code>ctx.audit.log</code>.</li><li>Return the updated HospitalConfiguration.</li></ol><h4>Entities</h4><ul><li>HospitalConfiguration</li></ul>",
+  "role" : "admin",
+  "functionName" : "update_hospital_settings"
+}

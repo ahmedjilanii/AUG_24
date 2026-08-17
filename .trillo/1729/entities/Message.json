@@ -1,0 +1,103 @@
+{
+  "name" : "Message",
+  "description" : "Represents a secure, encrypted message exchanged between a patient and a doctor.",
+  "ownership" : "user",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "patient" : [ "create", "read" ],
+    "doctor" : [ "create", "read" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "tenantId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "description" : "Tenant ID for multi-tenancy."
+  }, {
+    "name" : "idOfUser",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "representsOwnership" : true,
+    "createOnly" : true,
+    "description" : "Owning patient — set automatically from the associated patient; only the owning patient or an admin/doctor may access."
+  }, {
+    "name" : "senderPatientId",
+    "type" : "long",
+    "indexed" : true,
+    "description" : "Foreign key to PatientProfile if sender is a patient."
+  }, {
+    "name" : "senderDoctorId",
+    "type" : "long",
+    "indexed" : true,
+    "description" : "Foreign key to DoctorProfile if sender is a doctor."
+  }, {
+    "name" : "receiverPatientId",
+    "type" : "long",
+    "indexed" : true,
+    "description" : "Foreign key to PatientProfile if receiver is a patient."
+  }, {
+    "name" : "receiverDoctorId",
+    "type" : "long",
+    "indexed" : true,
+    "description" : "Foreign key to DoctorProfile if receiver is a doctor."
+  }, {
+    "name" : "content",
+    "type" : "text",
+    "required" : true,
+    "encrypt" : true,
+    "phi" : true,
+    "sensitive" : true,
+    "description" : "Encrypted content of the message."
+  }, {
+    "name" : "timestamp",
+    "type" : "timestamptz",
+    "required" : true,
+    "indexed" : true,
+    "description" : "Timestamp when the message was sent."
+  }, {
+    "name" : "isRead",
+    "type" : "boolean",
+    "defaultValue" : false,
+    "indexed" : true,
+    "description" : "True if the message has been read by the recipient."
+  }, {
+    "name" : "appointmentId",
+    "type" : "long",
+    "indexed" : true,
+    "description" : "Optional foreign key to an associated Appointment."
+  }, {
+    "name" : "messageType",
+    "type" : "string",
+    "length" : 50,
+    "enumValues" : "text,attachment,system_notification",
+    "description" : "Type of message."
+  } ]
+}

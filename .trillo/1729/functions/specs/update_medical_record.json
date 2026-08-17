@@ -1,0 +1,8 @@
+{
+  "name" : "updateMedicalRecord",
+  "shortDescription" : "Allows doctors to update patient medical records, enforcing data integrity and compliance rules, and linking to relevant profiles.",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "doctor", "admin" ],
+  "description" : "<h4>Overview</h4><p>Enables doctors to update a patient's medical records (EHR). This function enforces data integrity and compliance rules, including required fields, data formats, and logical consistency checks, before persisting changes.</p><h4>Intended use</h4><p>Called by the doctor dashboard UI when a doctor submits updates to a patient's medical record.</p><h4>Logic</h4><ol><li>Validate the incoming <code>params</code> for required fields (<code>diagnosis</code>, <code>recordDate</code>, <code>patientProfileId</code>, <code>doctorProfileId</code>), data formats, and logical consistency (e.g., <code>recordDate</code> not in the future). Return an error if validation fails.</li><li>Retrieve the PatientProfile and DoctorProfile to ensure they exist and the doctor is authorized for this patient (e.g., via active appointment or assignment).</li><li>Create or update the MedicalRecord entry using <code>ctx.data.create</code> or <code>ctx.data.update</code>.</li><li>Audit-log the medical record update using <code>ctx.audit.log</code>.</li><li>Return the updated MedicalRecord.</li></ol><h4>Entities</h4><ul><li>MedicalRecord</li><li>PatientProfile</li><li>DoctorProfile</li></ul>",
+  "functionName" : "update_medical_record"
+}

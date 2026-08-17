@@ -1,0 +1,8 @@
+{
+  "name" : "queryPatientMedicalRecords",
+  "shortDescription" : "Retrieves specific medical information for a given patient, respecting access controls and providing summaries or details.",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "patient", "doctor" ],
+  "description" : "<h4>Overview</h4><p>Retrieves specific medical information for a given patient. This function ensures that access controls are respected, allowing patients to view their own records and doctors to view records of assigned patients or those with active appointments. It can summarize or extract details from MedicalRecord entries.</p><h4>Intended use</h4><p>Called by the patient portal or doctor dashboard UI to display a patient's medical history or specific record details.</p><h4>Logic</h4><ol><li>Validate input parameters, including <code>patientProfileId</code> and optional filters (e.g., <code>recordType</code>, <code>dateRange</code>).</li><li>Verify that the authenticated user (patient or doctor) has appropriate access rights to the <code>patientProfileId</code>. (Platform ownership will handle patient's own records; for doctors, additional logic might be needed to check <code>DoctorProfile</code> relationships or active appointments).</li><li>Query the MedicalRecord entity using <code>ctx.data.query</code> with <code>patientProfileId</code> and any provided filters.</li><li>Return the list of matching MedicalRecord entries.</li></ol><h4>Entities</h4><ul><li>MedicalRecord</li><li>PatientProfile</li></ul>",
+  "functionName" : "query_patient_medical_records"
+}
