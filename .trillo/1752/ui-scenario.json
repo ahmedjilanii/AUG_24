@@ -24,7 +24,7 @@
     "_uid_" : "A.0.1.7"
   } ],
   "roles" : [ "none" ],
-  "_uid_" : "A.0.171"
+  "_uid_" : "A.0.1"
 }, {
   "id" : "signup",
   "title" : "Register for a new account",
@@ -43,20 +43,17 @@
     "value" : "User selects a role from a dropdown list. Only 'patient' role is available for self-signup.",
     "_uid_" : "A.0.8.12"
   }, {
-    "value" : "User reviews and agrees to the Terms of Service and Privacy Policy.",
+    "value" : "User clicks the 'Register' button.",
     "_uid_" : "A.0.8.13"
   }, {
-    "value" : "User clicks the 'Register' button.",
+    "value" : "System sends a verification email to the user's registered email address.",
     "_uid_" : "A.0.8.14"
   }, {
-    "value" : "System sends a verification email to the user's registered email address.",
-    "_uid_" : "A.0.8.15"
-  }, {
     "value" : "User is redirected to a page instructing them to check their email for verification, with a note to check spam folder.",
-    "_uid_" : "A.0.8.16"
+    "_uid_" : "A.0.8.15"
   } ],
   "roles" : [ "none" ],
-  "_uid_" : "A.0.178"
+  "_uid_" : "A.0.8"
 }, {
   "id" : "forgotPassword",
   "title" : "Request password reset",
@@ -64,22 +61,22 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "User clicks 'Forgot Password' from the login page.",
-    "_uid_" : "A.0.17.18"
+    "_uid_" : "A.0.16.17"
   }, {
     "value" : "User is prompted to enter their registered email address.",
-    "_uid_" : "A.0.17.19"
+    "_uid_" : "A.0.16.18"
   }, {
     "value" : "User clicks 'Submit' or 'Send Reset Link'.",
-    "_uid_" : "A.0.17.20"
+    "_uid_" : "A.0.16.19"
   }, {
     "value" : "System sends a password reset link to the provided email address.",
-    "_uid_" : "A.0.17.21"
+    "_uid_" : "A.0.16.20"
   }, {
     "value" : "User is redirected to a page instructing them to check their email for the reset link.",
-    "_uid_" : "A.0.17.22"
+    "_uid_" : "A.0.16.21"
   } ],
   "roles" : [ "none" ],
-  "_uid_" : "A.0.187"
+  "_uid_" : "A.0.16"
 }, {
   "id" : "resetPassword",
   "title" : "Set a new password",
@@ -87,22 +84,22 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "User receives a password reset email and clicks on the provided link.",
-    "_uid_" : "A.0.23.24"
+    "_uid_" : "A.0.22.23"
   }, {
     "value" : "User is directed to a 'Reset Password' page.",
-    "_uid_" : "A.0.23.25"
+    "_uid_" : "A.0.22.24"
   }, {
     "value" : "User enters and confirms a new password, ensuring it meets complexity requirements.",
-    "_uid_" : "A.0.23.26"
+    "_uid_" : "A.0.22.25"
   }, {
     "value" : "User clicks 'Set New Password' button.",
-    "_uid_" : "A.0.23.27"
+    "_uid_" : "A.0.22.26"
   }, {
     "value" : "Upon successful password reset, the user is redirected to the login page with a success message.",
-    "_uid_" : "A.0.23.28"
+    "_uid_" : "A.0.22.27"
   } ],
   "roles" : [ "none" ],
-  "_uid_" : "A.0.193"
+  "_uid_" : "A.0.22"
 }, {
   "id" : "adminDashboard",
   "title" : "Admin Dashboard Overview",
@@ -110,16 +107,16 @@
   "landingScenario" : true,
   "steps" : [ {
     "value" : "Login leads to Admin Dashboard scenario.",
-    "_uid_" : "A.0.29.30"
+    "_uid_" : "A.0.28.29"
   }, {
     "value" : "The administrator views an overview dashboard displaying key metrics (e.g., number of active users, pending appointments, system health).",
-    "_uid_" : "A.0.29.31"
+    "_uid_" : "A.0.28.30"
   }, {
     "value" : "The dashboard provides navigation links or widgets to User Management, Appointment Oversight, Reporting & Analytics, System Configuration, Audit Logs, and Webhook Configuration.",
-    "_uid_" : "A.0.29.32"
+    "_uid_" : "A.0.28.31"
   } ],
   "roles" : [ "admin" ],
-  "_uid_" : "A.0.199"
+  "_uid_" : "A.0.28"
 }, {
   "id" : "adminManageUsers",
   "title" : "Manage System Users",
@@ -127,43 +124,43 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Admin Dashboard, the administrator navigates to the User Management section.",
-    "_uid_" : "A.0.33.34"
+    "_uid_" : "A.0.32.33"
   }, {
     "value" : "The administrator views a list of all registered users in the system.",
-    "_uid_" : "A.0.33.35"
+    "_uid_" : "A.0.32.34"
   }, {
     "value" : "The administrator can search or filter users by name, role, or status.",
-    "_uid_" : "A.0.33.36"
+    "_uid_" : "A.0.32.35"
   }, {
     "value" : "To create a new user (e.g., a doctor or another admin), the administrator clicks 'Add New User'.",
-    "_uid_" : "A.0.33.37"
+    "_uid_" : "A.0.32.36"
   }, {
     "value" : "The administrator enters user details (name, email, password, etc.).",
-    "_uid_" : "A.0.33.38"
+    "_uid_" : "A.0.32.37"
   }, {
     "value" : "The administrator selects one or more roles for the new user (e.g., Doctor, Admin).",
-    "_uid_" : "A.0.33.39"
+    "_uid_" : "A.0.32.38"
   }, {
     "value" : "The administrator saves the new user account.",
-    "_uid_" : "A.0.33.40"
+    "_uid_" : "A.0.32.39"
   }, {
     "value" : "To edit an existing user, the administrator selects a user from the list and clicks 'Edit'.",
-    "_uid_" : "A.0.33.41"
+    "_uid_" : "A.0.32.40"
   }, {
     "value" : "The administrator modifies user details or assigned roles.",
-    "_uid_" : "A.0.33.42"
+    "_uid_" : "A.0.32.41"
   }, {
     "value" : "The administrator saves the changes.",
-    "_uid_" : "A.0.33.43"
+    "_uid_" : "A.0.32.42"
   }, {
     "value" : "To deactivate a user, the administrator selects a user and confirms deactivation.",
-    "_uid_" : "A.0.33.44"
+    "_uid_" : "A.0.32.43"
   }, {
     "value" : "To view user details, the administrator clicks on a user's entry.",
-    "_uid_" : "A.0.33.45"
+    "_uid_" : "A.0.32.44"
   } ],
   "roles" : [ "admin" ],
-  "_uid_" : "A.0.203"
+  "_uid_" : "A.0.32"
 }, {
   "id" : "adminOverseeAppointments",
   "title" : "Oversee All Appointment Activities",
@@ -171,25 +168,25 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Admin Dashboard, the administrator navigates to the Appointment Oversight section.",
-    "_uid_" : "A.0.46.47"
+    "_uid_" : "A.0.45.46"
   }, {
     "value" : "The administrator views a list of all appointments (scheduled, pending, completed, cancelled).",
-    "_uid_" : "A.0.46.48"
+    "_uid_" : "A.0.45.47"
   }, {
     "value" : "The administrator can filter appointments by doctor, patient, date range, or status.",
-    "_uid_" : "A.0.46.49"
+    "_uid_" : "A.0.45.48"
   }, {
     "value" : "The administrator can search for specific appointments.",
-    "_uid_" : "A.0.46.50"
+    "_uid_" : "A.0.45.49"
   }, {
     "value" : "The administrator can view details of any appointment, including patient, doctor, date, time, and status.",
-    "_uid_" : "A.0.46.51"
+    "_uid_" : "A.0.45.50"
   }, {
     "value" : "The administrator can change the status of an appointment (e.g., cancel, mark as complete) or reschedule it if necessary for administrative purposes.",
-    "_uid_" : "A.0.46.52"
+    "_uid_" : "A.0.45.51"
   } ],
   "roles" : [ "admin" ],
-  "_uid_" : "A.0.216"
+  "_uid_" : "A.0.45"
 }, {
   "id" : "adminManageSystemSettings",
   "title" : "Configure Hospital System Settings",
@@ -197,22 +194,22 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Admin Dashboard, the administrator navigates to the System Configuration section.",
-    "_uid_" : "A.0.53.54"
+    "_uid_" : "A.0.52.53"
   }, {
     "value" : "The administrator views a list of configurable settings (e.g., operating hours, holiday calendar, default appointment durations, privacy policy links).",
-    "_uid_" : "A.0.53.55"
+    "_uid_" : "A.0.52.54"
   }, {
     "value" : "The administrator selects a setting to modify.",
-    "_uid_" : "A.0.53.56"
+    "_uid_" : "A.0.52.55"
   }, {
     "value" : "The administrator updates the value of the setting.",
-    "_uid_" : "A.0.53.57"
+    "_uid_" : "A.0.52.56"
   }, {
     "value" : "The administrator saves the changes to the system settings.",
-    "_uid_" : "A.0.53.58"
+    "_uid_" : "A.0.52.57"
   } ],
   "roles" : [ "admin" ],
-  "_uid_" : "A.0.223"
+  "_uid_" : "A.0.52"
 }, {
   "id" : "adminGenerateReports",
   "title" : "Generate and Export System Reports",
@@ -220,31 +217,31 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Admin Dashboard, the administrator navigates to the Reporting & Analytics section.",
-    "_uid_" : "A.0.59.60"
+    "_uid_" : "A.0.58.59"
   }, {
     "value" : "The administrator views a list of available report types (e.g., Appointment Summary, User Activity, Communication Metrics).",
-    "_uid_" : "A.0.59.61"
+    "_uid_" : "A.0.58.60"
   }, {
     "value" : "The administrator selects a report type.",
-    "_uid_" : "A.0.59.62"
+    "_uid_" : "A.0.58.61"
   }, {
     "value" : "The administrator specifies report parameters (e.g., date range, specific doctor/patient, status filters).",
-    "_uid_" : "A.0.59.63"
+    "_uid_" : "A.0.58.62"
   }, {
     "value" : "The administrator clicks 'Generate Report'.",
-    "_uid_" : "A.0.59.64"
+    "_uid_" : "A.0.58.63"
   }, {
     "value" : "The system displays the generated report data.",
-    "_uid_" : "A.0.59.65"
+    "_uid_" : "A.0.58.64"
   }, {
     "value" : "The administrator can choose to export the report in CSV or PDF format.",
-    "_uid_" : "A.0.59.66"
+    "_uid_" : "A.0.58.65"
   }, {
     "value" : "The system initiates the download of the selected report file.",
-    "_uid_" : "A.0.59.67"
+    "_uid_" : "A.0.58.66"
   } ],
   "roles" : [ "admin" ],
-  "_uid_" : "A.0.229"
+  "_uid_" : "A.0.58"
 }, {
   "id" : "adminReviewAuditLogs",
   "title" : "Review Comprehensive Audit Logs",
@@ -252,22 +249,22 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Admin Dashboard, the administrator navigates to the Audit Logs section.",
-    "_uid_" : "A.0.68.69"
+    "_uid_" : "A.0.67.68"
   }, {
     "value" : "The administrator views a chronological list of system events and user actions.",
-    "_uid_" : "A.0.68.70"
+    "_uid_" : "A.0.67.69"
   }, {
     "value" : "The administrator can filter logs by date range, user, action type (e.g., login, PHI access, record modification), or affected entity.",
-    "_uid_" : "A.0.68.71"
+    "_uid_" : "A.0.67.70"
   }, {
     "value" : "The administrator can search for specific log entries.",
-    "_uid_" : "A.0.68.72"
+    "_uid_" : "A.0.67.71"
   }, {
     "value" : "The administrator can view detailed information for each log entry, including timestamp, user, action, and outcome.",
-    "_uid_" : "A.0.68.73"
+    "_uid_" : "A.0.67.72"
   } ],
   "roles" : [ "admin" ],
-  "_uid_" : "A.0.238"
+  "_uid_" : "A.0.67"
 }, {
   "id" : "adminManageWebhooks",
   "title" : "Manage Webhook Notifications",
@@ -275,37 +272,60 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Admin Dashboard, the administrator navigates to the Webhook Configuration section.",
-    "_uid_" : "A.0.74.75"
+    "_uid_" : "A.0.73.74"
   }, {
     "value" : "The administrator views a list of existing webhook configurations.",
-    "_uid_" : "A.0.74.76"
+    "_uid_" : "A.0.73.75"
   }, {
     "value" : "To add a new webhook, the administrator clicks 'Add New Webhook'.",
-    "_uid_" : "A.0.74.77"
+    "_uid_" : "A.0.73.76"
   }, {
     "value" : "The administrator specifies the webhook URL, trigger events (e.g., appointment status change, new message), and any authentication details.",
-    "_uid_" : "A.0.74.78"
+    "_uid_" : "A.0.73.77"
   }, {
     "value" : "The administrator saves the new webhook configuration.",
-    "_uid_" : "A.0.74.79"
+    "_uid_" : "A.0.73.78"
   }, {
     "value" : "To edit an existing webhook, the administrator selects a webhook and clicks 'Edit'.",
-    "_uid_" : "A.0.74.80"
+    "_uid_" : "A.0.73.79"
   }, {
     "value" : "The administrator modifies the webhook details.",
-    "_uid_" : "A.0.74.81"
+    "_uid_" : "A.0.73.80"
   }, {
     "value" : "The administrator saves the changes.",
-    "_uid_" : "A.0.74.82"
+    "_uid_" : "A.0.73.81"
   }, {
     "value" : "To delete a webhook, the administrator selects a webhook and confirms deletion.",
-    "_uid_" : "A.0.74.83"
+    "_uid_" : "A.0.73.82"
   }, {
     "value" : "The administrator can test a webhook configuration to ensure it's working correctly.",
-    "_uid_" : "A.0.74.84"
+    "_uid_" : "A.0.73.83"
   } ],
   "roles" : [ "admin" ],
-  "_uid_" : "A.0.244"
+  "_uid_" : "A.0.73"
+}, {
+  "id" : "adminAIAssistantReporting",
+  "title" : "Utilize AI Assistant for Reporting",
+  "description" : "Allows administrators to interact with an AI assistant to generate custom reports and analyze operational data, providing insights into hospital operations.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "From the Admin Dashboard, the administrator navigates to the AI Assistant Interface.",
+    "_uid_" : "A.0.84.85"
+  }, {
+    "value" : "The administrator initiates a conversation with the AI assistant.",
+    "_uid_" : "A.0.84.86"
+  }, {
+    "value" : "The administrator requests a custom report or analysis (e.g., 'Show me appointment trends for the last quarter', 'Analyze user engagement for doctors').",
+    "_uid_" : "A.0.84.87"
+  }, {
+    "value" : "The AI assistant processes the request, potentially asking for clarification or additional parameters.",
+    "_uid_" : "A.0.84.88"
+  }, {
+    "value" : "The AI assistant presents the report or analysis results, possibly with options to export.",
+    "_uid_" : "A.0.84.89"
+  } ],
+  "roles" : [ "admin" ],
+  "_uid_" : "A.0.84"
 }, {
   "id" : "patientDashboard",
   "title" : "Patient Dashboard Overview",
@@ -313,16 +333,16 @@
   "landingScenario" : true,
   "steps" : [ {
     "value" : "Login leads to Patient Dashboard scenario.",
-    "_uid_" : "A.0.85.86"
+    "_uid_" : "A.0.90.91"
   }, {
     "value" : "The patient views an overview dashboard displaying upcoming appointments, recent medical records, and unread messages.",
-    "_uid_" : "A.0.85.87"
+    "_uid_" : "A.0.90.92"
   }, {
     "value" : "The dashboard provides navigation links or widgets to manage their profile, schedule appointments, access medical records, send secure messages, and manage consents.",
-    "_uid_" : "A.0.85.88"
+    "_uid_" : "A.0.90.93"
   } ],
   "roles" : [ "patient" ],
-  "_uid_" : "A.0.255"
+  "_uid_" : "A.0.90"
 }, {
   "id" : "patientManageProfile",
   "title" : "Manage Personal Profile",
@@ -330,19 +350,19 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Patient Dashboard, the patient navigates to the 'My Profile' section.",
-    "_uid_" : "A.0.89.90"
+    "_uid_" : "A.0.94.95"
   }, {
     "value" : "The patient views their current personal details, contact information, and other profile attributes.",
-    "_uid_" : "A.0.89.91"
+    "_uid_" : "A.0.94.96"
   }, {
     "value" : "The patient can edit editable fields such as address, phone number, and email.",
-    "_uid_" : "A.0.89.92"
+    "_uid_" : "A.0.94.97"
   }, {
     "value" : "The patient saves the changes to their profile.",
-    "_uid_" : "A.0.89.93"
+    "_uid_" : "A.0.94.98"
   } ],
   "roles" : [ "patient" ],
-  "_uid_" : "A.0.259"
+  "_uid_" : "A.0.94"
 }, {
   "id" : "patientScheduleAppointment",
   "title" : "Schedule a New Appointment",
@@ -350,28 +370,28 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Patient Dashboard, the patient navigates to the 'Schedule Appointment' section.",
-    "_uid_" : "A.0.94.95"
+    "_uid_" : "A.0.99.100"
   }, {
     "value" : "The patient can search for doctors by specialty, name, or availability.",
-    "_uid_" : "A.0.94.96"
+    "_uid_" : "A.0.99.101"
   }, {
     "value" : "The patient views a list of available doctors and their schedules.",
-    "_uid_" : "A.0.94.97"
+    "_uid_" : "A.0.99.102"
   }, {
     "value" : "The patient selects a preferred doctor, date, and time slot.",
-    "_uid_" : "A.0.94.98"
+    "_uid_" : "A.0.99.103"
   }, {
     "value" : "The patient provides a reason for the visit and any relevant notes.",
-    "_uid_" : "A.0.94.99"
+    "_uid_" : "A.0.99.104"
   }, {
     "value" : "The patient reviews the appointment details and confirms the booking request.",
-    "_uid_" : "A.0.94.100"
+    "_uid_" : "A.0.99.105"
   }, {
     "value" : "The system provides confirmation of the appointment request submission.",
-    "_uid_" : "A.0.94.101"
+    "_uid_" : "A.0.99.106"
   } ],
   "roles" : [ "patient" ],
-  "_uid_" : "A.0.264"
+  "_uid_" : "A.0.99"
 }, {
   "id" : "patientViewAppointments",
   "title" : "View and Manage My Appointments",
@@ -379,25 +399,25 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Patient Dashboard, the patient navigates to the 'My Appointments' section.",
-    "_uid_" : "A.0.102.103"
+    "_uid_" : "A.0.107.108"
   }, {
     "value" : "The patient views a list of all their appointments, categorized by upcoming, pending, and past.",
-    "_uid_" : "A.0.102.104"
+    "_uid_" : "A.0.107.109"
   }, {
     "value" : "The patient can filter or sort appointments by date, doctor, or status.",
-    "_uid_" : "A.0.102.105"
+    "_uid_" : "A.0.107.110"
   }, {
     "value" : "The patient selects an upcoming appointment to view its details.",
-    "_uid_" : "A.0.102.106"
+    "_uid_" : "A.0.107.111"
   }, {
     "value" : "For an upcoming appointment, the patient has options to reschedule or cancel the appointment.",
-    "_uid_" : "A.0.102.107"
+    "_uid_" : "A.0.107.112"
   }, {
     "value" : "The patient confirms the reschedule or cancellation action.",
-    "_uid_" : "A.0.102.108"
+    "_uid_" : "A.0.107.113"
   } ],
   "roles" : [ "patient" ],
-  "_uid_" : "A.0.272"
+  "_uid_" : "A.0.107"
 }, {
   "id" : "patientAccessMedicalRecords",
   "title" : "Access My Medical Records and Visit Summaries",
@@ -405,22 +425,22 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Patient Dashboard, the patient navigates to the 'Medical Records' section.",
-    "_uid_" : "A.0.109.110"
+    "_uid_" : "A.0.114.115"
   }, {
     "value" : "The patient views a chronological list of their medical records and visit summaries.",
-    "_uid_" : "A.0.109.111"
+    "_uid_" : "A.0.114.116"
   }, {
     "value" : "The patient can filter or search for specific records.",
-    "_uid_" : "A.0.109.112"
+    "_uid_" : "A.0.114.117"
   }, {
     "value" : "The patient selects a record to view detailed information, including diagnosis, treatment, prescriptions, and doctor's notes.",
-    "_uid_" : "A.0.109.113"
+    "_uid_" : "A.0.114.118"
   }, {
     "value" : "The patient has the option to download or print selected medical records.",
-    "_uid_" : "A.0.109.114"
+    "_uid_" : "A.0.114.119"
   } ],
   "roles" : [ "patient" ],
-  "_uid_" : "A.0.279"
+  "_uid_" : "A.0.114"
 }, {
   "id" : "patientSecureMessaging",
   "title" : "Secure Messaging with My Doctor",
@@ -428,22 +448,22 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Patient Dashboard, the patient navigates to the 'Secure Messages' section.",
-    "_uid_" : "A.0.115.116"
+    "_uid_" : "A.0.120.121"
   }, {
     "value" : "The patient views a list of their message conversations with assigned doctors.",
-    "_uid_" : "A.0.115.117"
+    "_uid_" : "A.0.120.122"
   }, {
     "value" : "The patient selects a conversation to view the message history.",
-    "_uid_" : "A.0.115.118"
+    "_uid_" : "A.0.120.123"
   }, {
     "value" : "The patient can compose and send a new message to an assigned doctor.",
-    "_uid_" : "A.0.115.119"
+    "_uid_" : "A.0.120.124"
   }, {
     "value" : "The patient receives notifications for new incoming messages.",
-    "_uid_" : "A.0.115.120"
+    "_uid_" : "A.0.120.125"
   } ],
   "roles" : [ "patient" ],
-  "_uid_" : "A.0.285"
+  "_uid_" : "A.0.120"
 }, {
   "id" : "patientManageDataRights",
   "title" : "Manage My Data Rights",
@@ -451,25 +471,25 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Patient Dashboard, the patient navigates to the 'Data Rights Management' section.",
-    "_uid_" : "A.0.121.122"
+    "_uid_" : "A.0.126.127"
   }, {
     "value" : "The patient views options to request data access, correction, or deletion.",
-    "_uid_" : "A.0.121.123"
+    "_uid_" : "A.0.126.128"
   }, {
     "value" : "The patient selects an option (e.g., 'Request Data Access').",
-    "_uid_" : "A.0.121.124"
+    "_uid_" : "A.0.126.129"
   }, {
     "value" : "The patient fills out a form specifying the details of their request.",
-    "_uid_" : "A.0.121.125"
+    "_uid_" : "A.0.126.130"
   }, {
     "value" : "The patient submits the request.",
-    "_uid_" : "A.0.121.126"
+    "_uid_" : "A.0.126.131"
   }, {
     "value" : "The patient can view the status and history of their submitted data rights requests.",
-    "_uid_" : "A.0.121.127"
+    "_uid_" : "A.0.126.132"
   } ],
   "roles" : [ "patient" ],
-  "_uid_" : "A.0.291"
+  "_uid_" : "A.0.126"
 }, {
   "id" : "patientManageConsents",
   "title" : "Manage My Consents",
@@ -477,25 +497,48 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Patient Dashboard, the patient navigates to the 'Consent Management' section.",
-    "_uid_" : "A.0.128.129"
+    "_uid_" : "A.0.133.134"
   }, {
     "value" : "The patient views a list of legal policies (e.g., Terms of Use, Privacy Policy) and data usage consents.",
-    "_uid_" : "A.0.128.130"
+    "_uid_" : "A.0.133.135"
   }, {
     "value" : "The patient can review the details of each consent.",
-    "_uid_" : "A.0.128.131"
+    "_uid_" : "A.0.133.136"
   }, {
     "value" : "The patient can grant or revoke consent for specific items, where applicable.",
-    "_uid_" : "A.0.128.132"
+    "_uid_" : "A.0.133.137"
   }, {
     "value" : "The patient confirms their consent choices.",
-    "_uid_" : "A.0.128.133"
+    "_uid_" : "A.0.133.138"
   }, {
     "value" : "The patient views a history of their consent decisions.",
-    "_uid_" : "A.0.128.134"
+    "_uid_" : "A.0.133.139"
   } ],
   "roles" : [ "patient" ],
-  "_uid_" : "A.0.298"
+  "_uid_" : "A.0.133"
+}, {
+  "id" : "patientAIAssistant",
+  "title" : "Utilize AI Assistant for Patient Self-Service",
+  "description" : "Allows patients to interact with an AI assistant for self-service tasks like appointment scheduling, information retrieval, and general portal navigation.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "From the Patient Dashboard, the patient navigates to the 'AI Assistant' interface.",
+    "_uid_" : "A.0.140.141"
+  }, {
+    "value" : "The patient initiates a conversation with the AI assistant.",
+    "_uid_" : "A.0.140.142"
+  }, {
+    "value" : "The patient asks a question or requests a task (e.g., 'Schedule an appointment,' 'What are my upcoming appointments?', 'Summarize my last visit.').",
+    "_uid_" : "A.0.140.143"
+  }, {
+    "value" : "The AI assistant processes the request, potentially asking for clarification or additional parameters.",
+    "_uid_" : "A.0.140.144"
+  }, {
+    "value" : "The AI assistant provides information or guides the patient through the requested task (e.g., presents available appointment slots, displays a summary of medical records).",
+    "_uid_" : "A.0.140.145"
+  } ],
+  "roles" : [ "patient" ],
+  "_uid_" : "A.0.140"
 }, {
   "id" : "doctorDashboard",
   "title" : "Doctor Dashboard Overview",
@@ -503,16 +546,16 @@
   "landingScenario" : true,
   "steps" : [ {
     "value" : "Login leads to Doctor Dashboard scenario.",
-    "_uid_" : "A.0.135.136"
+    "_uid_" : "A.0.146.147"
   }, {
     "value" : "The doctor views an overview dashboard displaying their upcoming clinical schedule, pending appointment requests, and unread secure messages.",
-    "_uid_" : "A.0.135.137"
+    "_uid_" : "A.0.146.148"
   }, {
     "value" : "The dashboard provides navigation links or widgets to manage their schedule, review appointment requests, access patient medical records, and send secure messages.",
-    "_uid_" : "A.0.135.138"
+    "_uid_" : "A.0.146.149"
   } ],
   "roles" : [ "doctor" ],
-  "_uid_" : "A.0.305"
+  "_uid_" : "A.0.146"
 }, {
   "id" : "doctorManageSchedule",
   "title" : "Manage Clinical Schedule and Availability",
@@ -520,22 +563,22 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Doctor Dashboard, the doctor navigates to the 'My Schedule' section.",
-    "_uid_" : "A.0.139.140"
+    "_uid_" : "A.0.150.151"
   }, {
     "value" : "The doctor views their current clinical schedule, including working hours and blocked time slots.",
-    "_uid_" : "A.0.139.141"
+    "_uid_" : "A.0.150.152"
   }, {
     "value" : "The doctor can set or modify their regular working hours for different days of the week.",
-    "_uid_" : "A.0.139.142"
+    "_uid_" : "A.0.150.153"
   }, {
     "value" : "The doctor can block specific time slots for breaks, meetings, or personal time.",
-    "_uid_" : "A.0.139.143"
+    "_uid_" : "A.0.150.154"
   }, {
     "value" : "The doctor can view a list of all their confirmed appointments.",
-    "_uid_" : "A.0.139.144"
+    "_uid_" : "A.0.150.155"
   } ],
   "roles" : [ "doctor" ],
-  "_uid_" : "A.0.309"
+  "_uid_" : "A.0.150"
 }, {
   "id" : "doctorReviewAppointmentRequests",
   "title" : "Review and Respond to Patient Appointment Requests",
@@ -543,25 +586,25 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Doctor Dashboard, the doctor navigates to the 'Pending Appointment Requests' section.",
-    "_uid_" : "A.0.145.146"
+    "_uid_" : "A.0.156.157"
   }, {
     "value" : "The doctor views a list of all new and pending appointment requests from patients.",
-    "_uid_" : "A.0.145.147"
+    "_uid_" : "A.0.156.158"
   }, {
     "value" : "The doctor selects an appointment request to view its details, including patient information, requested date/time, and reason for visit.",
-    "_uid_" : "A.0.145.148"
+    "_uid_" : "A.0.156.159"
   }, {
     "value" : "The doctor can choose to 'Approve' the appointment request.",
-    "_uid_" : "A.0.145.149"
+    "_uid_" : "A.0.156.160"
   }, {
     "value" : "The doctor can choose to 'Decline' the appointment request, providing a reason for the decline.",
-    "_uid_" : "A.0.145.150"
+    "_uid_" : "A.0.156.161"
   }, {
     "value" : "The system updates the appointment status and notifies the patient.",
-    "_uid_" : "A.0.145.151"
+    "_uid_" : "A.0.156.162"
   } ],
   "roles" : [ "doctor" ],
-  "_uid_" : "A.0.315"
+  "_uid_" : "A.0.156"
 }, {
   "id" : "doctorManagePatientRecords",
   "title" : "View and Update Assigned Patient Medical Records",
@@ -569,28 +612,28 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Doctor Dashboard, the doctor navigates to the 'My Patients' or 'Patient Records' section.",
-    "_uid_" : "A.0.152.153"
+    "_uid_" : "A.0.163.164"
   }, {
     "value" : "The doctor views a list of patients assigned to them.",
-    "_uid_" : "A.0.152.154"
+    "_uid_" : "A.0.163.165"
   }, {
     "value" : "The doctor selects a patient to view their comprehensive medical record history.",
-    "_uid_" : "A.0.152.155"
+    "_uid_" : "A.0.163.166"
   }, {
     "value" : "The doctor can view details of past visits, diagnoses, treatments, prescriptions, and clinical notes.",
-    "_uid_" : "A.0.152.156"
+    "_uid_" : "A.0.163.167"
   }, {
     "value" : "To update a record, the doctor selects an existing record or initiates a new entry (e.g., after a consultation).",
-    "_uid_" : "A.0.152.157"
+    "_uid_" : "A.0.163.168"
   }, {
     "value" : "The doctor adds new diagnoses, treatments, prescriptions, or clinical notes.",
-    "_uid_" : "A.0.152.158"
+    "_uid_" : "A.0.163.169"
   }, {
     "value" : "The doctor saves the updates to the patient's medical record.",
-    "_uid_" : "A.0.152.159"
+    "_uid_" : "A.0.163.170"
   } ],
   "roles" : [ "doctor" ],
-  "_uid_" : "A.0.322"
+  "_uid_" : "A.0.163"
 }, {
   "id" : "doctorSecureMessaging",
   "title" : "Secure Messaging with Patients",
@@ -598,22 +641,45 @@
   "landingScenario" : false,
   "steps" : [ {
     "value" : "From the Doctor Dashboard, the doctor navigates to the 'Secure Messages' section.",
-    "_uid_" : "A.0.160.161"
+    "_uid_" : "A.0.171.172"
   }, {
     "value" : "The doctor views a list of their message conversations with patients.",
-    "_uid_" : "A.0.160.162"
+    "_uid_" : "A.0.171.173"
   }, {
     "value" : "The doctor selects a conversation to view the message history.",
-    "_uid_" : "A.0.160.163"
+    "_uid_" : "A.0.171.174"
   }, {
     "value" : "The doctor can compose and send a new message to an assigned patient.",
-    "_uid_" : "A.0.160.164"
+    "_uid_" : "A.0.171.175"
   }, {
     "value" : "The doctor receives notifications for new incoming messages from patients.",
-    "_uid_" : "A.0.160.165"
+    "_uid_" : "A.0.171.176"
   } ],
   "roles" : [ "doctor" ],
-  "_uid_" : "A.0.330"
+  "_uid_" : "A.0.171"
+}, {
+  "id" : "doctorAIAssistant",
+  "title" : "Utilize AI Assistant for Doctor Workflow",
+  "description" : "Allows doctors to interact with an AI assistant to manage their schedule, quickly retrieve patient information summaries, and draft responses to patient messages.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "From the Doctor Dashboard, the doctor navigates to the 'AI Assistant' interface.",
+    "_uid_" : "A.0.177.178"
+  }, {
+    "value" : "The doctor initiates a conversation with the AI assistant.",
+    "_uid_" : "A.0.177.179"
+  }, {
+    "value" : "The doctor asks a question or requests a task (e.g., 'Show me my schedule for tomorrow', 'Summarize patient John Doe's last visit', 'Draft a response to patient Jane Smith about her lab results').",
+    "_uid_" : "A.0.177.180"
+  }, {
+    "value" : "The AI assistant processes the request, potentially asking for clarification or additional parameters.",
+    "_uid_" : "A.0.177.181"
+  }, {
+    "value" : "The AI assistant provides information or guides the doctor through the requested task (e.g., displays schedule, presents patient summary, drafts message).",
+    "_uid_" : "A.0.177.182"
+  } ],
+  "roles" : [ "doctor" ],
+  "_uid_" : "A.0.177"
 }, {
   "id" : "roleSelection",
   "title" : "Select Application Role",
@@ -621,17 +687,17 @@
   "landingScenario" : true,
   "steps" : [ {
     "value" : "Login leads to Role Selection scenario if the user has multiple assigned roles.",
-    "_uid_" : "A.0.166.167"
+    "_uid_" : "A.0.183.184"
   }, {
     "value" : "The user is presented with a list of application roles they are assigned to (e.g., Patient, Doctor).",
-    "_uid_" : "A.0.166.168"
+    "_uid_" : "A.0.183.185"
   }, {
     "value" : "The user selects one of the available roles.",
-    "_uid_" : "A.0.166.169"
+    "_uid_" : "A.0.183.186"
   }, {
     "value" : "Upon selection, the user is redirected to the landing dashboard specific to the chosen role (e.g., Patient Dashboard, Doctor Dashboard).",
-    "_uid_" : "A.0.166.170"
+    "_uid_" : "A.0.183.187"
   } ],
   "roles" : [ "user" ],
-  "_uid_" : "A.0.336"
+  "_uid_" : "A.0.183"
 } ]
