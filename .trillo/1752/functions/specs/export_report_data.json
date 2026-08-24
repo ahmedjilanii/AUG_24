@@ -1,0 +1,8 @@
+{
+  "name" : "exportReportData",
+  "shortDescription" : "Generates and provides downloadable administrative reports in CSV or PDF format based on various metrics.",
+  "description" : "<h4>Overview</h4><p>Generates and provides downloadable reports (CSV/PDF) based on appointment, user, or communication metrics for administrators. This function aggregates data from various entities to produce comprehensive reports.</p><h4>Intended use</h4><p>Called by the admin dashboard UI when an administrator requests to generate and download a report. Parameters may include report type, date range, and format (CSV/PDF). It returns a file stream or a URL to the generated report.</p><h4>Logic</h4><ol><li>Validate the input parameters, ensuring a valid report type, date range, and format are specified.</li><li>Based on the report type, query relevant entities such as <code>Appointment</code>, <code>User</code>, <code>Message</code>, or <code>MedicalRecord</code> using <code>ctx.data.query</code>.</li><li>Aggregate and process the retrieved data according to the report requirements.</li><li>Format the processed data into the requested output format (CSV or PDF).</li><li>Store the generated report temporarily using <code>ctx.files.save_content</code> or similar, and generate a signed download URL using <code>ctx.files.download_url</code>.</li><li>Audit-log the report generation with <code>ctx.audit.log</code>, including the report type and parameters.</li><li>Return the download URL for the generated report.</li></ol><h4>Entities</h4><ul><li>Appointment</li><li>User</li><li>Message</li><li>MedicalRecord</li></ul>",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "admin" ],
+  "functionName" : "export_report_data"
+}

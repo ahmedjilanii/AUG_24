@@ -1,0 +1,8 @@
+{
+  "name" : "listResponsibilitiesForUser",
+  "shortDescription" : "Retrieves a list of all responsibilities currently assigned to a specified Stump participant.",
+  "description" : "<h4>Overview</h4><p>Fetches a list of <code>Responsibility</code> records assigned to a particular <code>User</code> (Stump).</p><h4>Intended use</h4><p>Called by the Responsibility and Deliverable Management UI or an AI agent to show a Stump's task list. Parameter is <code>stumpId</code> (or <code>ctx.user_id</code> if Stump is calling).</p><h4>Logic</h4><ol><li>Determine <code>targetStumpId</code>: if <code>ctx.role</code> is 'stump', use <code>ctx.user_id</code>; otherwise, use <code>params.stumpId</code> and validate that <code>params.stumpId</code> corresponds to an existing <code>User</code> with the <code>stump</code> app role. If not found or not a Stump, return an error.</li><li>Query <code>Responsibility</code> entities where <code>idOfUser</code> is <code>targetStumpId</code> using <code>ctx.data.query</code>.</li><li>Return the list of <code>Responsibility</code> records.</li></ol><h4>Entities</h4><ul><li>Responsibility</li><li>User</li></ul>",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "leadPoint", "stump" ],
+  "functionName" : "list_responsibilities_for_user"
+}

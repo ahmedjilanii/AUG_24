@@ -1,0 +1,8 @@
+{
+  "name" : "initializeMolecule",
+  "shortDescription" : "Creates a new Molecule record along with its four predefined, immutable Quadrant entities.",
+  "description" : "<h4>Overview</h4><p>Creates a new <code>Molecule</code> record and automatically provisions its four fixed <code>Quadrant</code>s (Logistics, Operations, External Functions, Internal Objectives).</p><h4>Intended use</h4><p>Called by the Lead Point persona from a UI to set up a new project or event. Parameters include <code>name</code> and <code>description</code> for the Molecule.</p><h4>Logic</h4><ol><li>Create a new <code>Molecule</code> record using <code>ctx.data.create</code> with <code>name</code>, <code>description</code>, and <code>leadPointId</code> (from <code>ctx.user_id</code>).</li><li>For each of the four fixed quadrant names (\"Logistics\", \"Operations\", \"External Functions\", \"Internal Objectives\"):<ol type=\"a\"><li>Create a new <code>Quadrant</code> record using <code>ctx.data.create</code> with <code>moleculeId</code> (from the newly created Molecule), the quadrant <code>name</code>, a default <code>description</code>, and an <code>order</code> value.</li></ol></li><li>Audit-log the Molecule creation and quadrant initialization using <code>ctx.audit.log</code>, including the new Molecule's ID.</li><li>Return the created <code>Molecule</code> record along with its <code>Quadrant</code>s.</li></ol><h4>Entities</h4><ul><li>Molecule</li><li>Quadrant</li></ul>",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "leadPoint" ],
+  "functionName" : "initialize_molecule"
+}

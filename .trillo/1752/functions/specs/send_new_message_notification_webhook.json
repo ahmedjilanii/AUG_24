@@ -1,0 +1,8 @@
+{
+  "name" : "sendNewMessageNotificationWebhook",
+  "shortDescription" : "Dispatches a webhook notification to external systems when a new secure message is exchanged.",
+  "description" : "<h4>Overview</h4><p>Sends a webhook notification to external systems when a new secure message is sent between a patient and doctor. This facilitates real-time integration with other communication or monitoring platforms.</p><h4>Intended use</h4><p>This function is intended to be invoked as an event handler, typically triggered by a platform post-save hook on the <code>Message</code> entity. It receives the new message details as parameters.</p><h4>Logic</h4><ol><li>Receive the <code>Message</code> record details from the triggering event.</li><li>Construct a JSON payload containing relevant message information (ID, sender ID, receiver ID, conversation ID, timestamp).</li><li>Send the payload to the configured <code>WebhookService</code> using <code>ctx.service('WebhookService').send_notification</code>.</li><li>Audit-log the webhook dispatch with <code>ctx.audit.log</code>, including the message ID and webhook status.</li></ol><h4>Entities</h4><ul><li>Message</li></ul><h4>External Services</h4><ul><li>WebhookService</li></ul>",
+  "invocationMode" : "event",
+  "allowedAppRoles" : [ "system" ],
+  "functionName" : "send_new_message_notification_webhook"
+}

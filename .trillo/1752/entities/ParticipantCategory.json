@@ -1,0 +1,58 @@
+{
+  "name" : "ParticipantCategory",
+  "description" : "Links a Category to a specific Stump participant.",
+  "ownership" : "user",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "leadPoint" : [ "create", "read", "update", "delete" ],
+    "stump" : [ "read", "update", "delete" ],
+    "user" : [ ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "idOfUser",
+    "type" : "long",
+    "indexed" : true,
+    "required" : true,
+    "representsOwnership" : true,
+    "createOnly" : true,
+    "description" : "Owning Stump — set automatically on create from the authenticated user; only the owning Stump or an admin/Lead Point may update or delete this category association."
+  }, {
+    "name" : "categoryId",
+    "type" : "long",
+    "indexed" : true,
+    "required" : true,
+    "description" : "The ID of the Category linked to the Stump participant."
+  }, {
+    "name" : "assignedByUserId",
+    "type" : "long",
+    "indexed" : true,
+    "description" : "The ID of the User (Lead Point) who made this assignment."
+  } ]
+}

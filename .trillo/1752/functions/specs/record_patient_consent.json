@@ -1,0 +1,8 @@
+{
+  "name" : "recordPatientConsent",
+  "shortDescription" : "Records and updates patient consent for legal policies and data usage within the portal.",
+  "description" : "<h4>Overview</h4><p>Records and updates patient consent for various legal policies (e.g., Terms of Use, Privacy Policy) and data usage. This ensures compliance with legal and privacy requirements.</p><h4>Intended use</h4><p>Called by the patient-facing UI when a patient grants or revokes consent for a specific policy or data usage. Parameters include the patient ID, consent type, version, and status. It returns the updated consent record.</p><h4>Logic</h4><ol><li>Validate the input parameters, ensuring a valid patient ID, consent type, version, and status are provided.</li><li>Query the <code>ConsentRecord</code> entity to check for an existing consent record for the given patient and consent type.</li><li>If an existing record is found, update its <code>status</code> and <code>consentDate</code> using <code>ctx.data.update</code>.</li><li>If no existing record is found, create a new <code>ConsentRecord</code> using <code>ctx.data.create</code>.</li><li>Audit-log the consent action with <code>ctx.audit.log</code>, including the patient ID, consent type, and new status.</li><li>Return the created or updated consent record.</li></ol><h4>Entities</h4><ul><li>ConsentRecord</li><li>Patient</li></ul>",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "patient", "admin" ],
+  "functionName" : "record_patient_consent"
+}

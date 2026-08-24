@@ -1,0 +1,80 @@
+{
+  "name" : "Session",
+  "description" : "A specific instance of work or interaction on a Molecule, controlled by a Lead Point.",
+  "ownership" : "user",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "leadPoint" : [ "create", "read", "update", "delete" ],
+    "stump" : [ "read" ],
+    "user" : [ "read" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "moleculeId",
+    "type" : "long",
+    "indexed" : true,
+    "required" : true,
+    "description" : "The ID of the Molecule this Session is associated with."
+  }, {
+    "name" : "idOfUser",
+    "type" : "long",
+    "indexed" : true,
+    "required" : true,
+    "representsOwnership" : true,
+    "createOnly" : true,
+    "description" : "Owning Lead Point — set automatically on create from the authenticated user; only the owning Lead Point or an admin may update or delete this session."
+  }, {
+    "name" : "name",
+    "type" : "string",
+    "length" : 100,
+    "required" : true,
+    "indexed" : true,
+    "naming" : true,
+    "searchable" : true,
+    "description" : "The name of the session."
+  }, {
+    "name" : "status",
+    "type" : "string",
+    "length" : 50,
+    "indexed" : true,
+    "enumValues" : "planned,active,paused,ended,cancelled",
+    "defaultValue" : "planned",
+    "description" : "The current status of the session."
+  }, {
+    "name" : "startTime",
+    "type" : "timestamp",
+    "indexed" : true,
+    "description" : "The start time of the session."
+  }, {
+    "name" : "endTime",
+    "type" : "timestamp",
+    "indexed" : true,
+    "description" : "The end time of the session."
+  } ]
+}

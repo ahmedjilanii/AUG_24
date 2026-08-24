@@ -1,0 +1,8 @@
+{
+  "name" : "updateResponsibilityStatus",
+  "shortDescription" : "Changes the status of an existing responsibility (e.g., in_progress, completed, blocked), updating its progression.",
+  "description" : "<h4>Overview</h4><p>Modifies the <code>status</code> of an existing <code>Responsibility</code> record.</p><h4>Intended use</h4><p>Called by Lead Points or Stumps from the Responsibility and Deliverable Management UI, or by an AI agent, to update task progress. Parameters include <code>responsibilityId</code> and <code>newStatus</code>.</p><h4>Logic</h4><ol><li>Retrieve the <code>Responsibility</code> record using <code>params.responsibilityId</code> via <code>ctx.data.get</code>. If not found, return an error.</li><li>Verify that the <code>ctx.user_id</code> matches the <code>idOfUser</code> on the <code>Responsibility</code> record, or that the user has the <code>leadPoint</code> or <code>admin</code> role. If not, return an unauthorized error.</li><li>Validate <code>params.newStatus</code> against allowed <code>Responsibility.status</code> enum values. If invalid, return an error.</li><li>Update the <code>Responsibility</code> record's <code>status</code> attribute using <code>ctx.data.update</code>.</li><li>If <code>newStatus</code> is 'completed', set <code>completedAt</code> to the current timestamp.</li><li>Audit-log the responsibility status update using <code>ctx.audit.log</code>, including the responsibility ID and new status.</li><li>Return the updated <code>Responsibility</code> record.</li></ol><h4>Entities</h4><ul><li>Responsibility</li></ul>",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "leadPoint", "stump" ],
+  "functionName" : "update_responsibility_status"
+}

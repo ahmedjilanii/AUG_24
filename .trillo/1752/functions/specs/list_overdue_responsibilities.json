@@ -1,0 +1,8 @@
+{
+  "name" : "listOverdueResponsibilities",
+  "shortDescription" : "Identifies and lists all responsibilities that are past their due date and have not yet been marked as completed.",
+  "description" : "<h4>Overview</h4><p>Queries for all <code>Responsibility</code> records that have a <code>dueDate</code> in the past and a <code>status</code> that is not 'completed' or 'cancelled'.</p><h4>Intended use</h4><p>Primarily called by a scheduler (e.g., daily cron job) to identify overdue tasks for reporting or notifications. Can also be called by an AI agent. No parameters needed.</p><h4>Logic</h4><ol><li>Get the current date.</li><li>Query <code>Responsibility</code> entities using <code>ctx.data.query</code> with filters: <code>dueDate</code> less than current date, and <code>status</code> not equal to 'completed' and not equal to 'cancelled'.</li><li>Return the list of overdue <code>Responsibility</code> records.</li></ol><h4>Entities</h4><ul><li>Responsibility</li></ul>",
+  "invocationMode" : "scheduled",
+  "allowedAppRoles" : [ "admin", "leadPoint" ],
+  "functionName" : "list_overdue_responsibilities"
+}

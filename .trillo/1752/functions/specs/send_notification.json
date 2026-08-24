@@ -1,0 +1,8 @@
+{
+  "name" : "sendNotification",
+  "shortDescription" : "Sends a notification, such as an email, to a specified user with a custom subject and body.",
+  "description" : "<h4>Overview</h4><p>Sends an email notification to a specified user. This function acts as a wrapper for the platform's email service.</p><h4>Intended use</h4><p>Called by Lead Points or Admins from the UI, or by an AI agent (e.g., <code>progressMonitoringAgent</code> to alert about overdue tasks), to send direct communications. Parameters include <code>recipientUserId</code>, <code>subject</code>, and <code>body</code>.</p><h4>Logic</h4><ol><li>Retrieve the <code>User</code> record for <code>params.recipientUserId</code> using <code>ctx.data.get</code>. If not found, return an error.</li><li>Use <code>ctx.email.send</code> to send an email to <code>user.email</code> with <code>params.subject</code> and <code>params.body</code>.</li><li>Audit-log the notification send using <code>ctx.audit.log</code>, including the recipient and subject.</li><li>Return a success response.</li></ol><h4>Entities</h4><ul><li>User</li></ul><h4>External Services</h4><ul><li>Email Service</li></ul>",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "admin", "leadPoint" ],
+  "functionName" : "send_notification"
+}

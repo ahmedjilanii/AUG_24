@@ -1,0 +1,8 @@
+{
+  "name" : "updateDeliverableStatus",
+  "shortDescription" : "Changes the status of an existing deliverable (e.g., submitted, approved, rejected), updating its progression.",
+  "description" : "<h4>Overview</h4><p>Modifies the <code>status</code> of an existing <code>Deliverable</code> record.</p><h4>Intended use</h4><p>Called by Lead Points or Stumps from the Responsibility and Deliverable Management UI, or by an AI agent, to update the status of a deliverable. Parameters include <code>deliverableId</code> and <code>newStatus</code>.</p><h4>Logic</h4><ol><li>Retrieve the <code>Deliverable</code> record using <code>params.deliverableId</code> via <code>ctx.data.get</code>. If not found, return an error.</li><li>Verify that the <code>ctx.user_id</code> matches the <code>idOfUser</code> on the <code>Deliverable</code> record, or that the user has the <code>leadPoint</code> or <code>admin</code> role. If not, return an unauthorized error.</li><li>Validate <code>params.newStatus</code> against allowed <code>Deliverable.status</code> enum values. If invalid, return an error.</li><li>Update the <code>Deliverable</code> record's <code>status</code> attribute using <code>ctx.data.update</code>.</li><li>If <code>newStatus</code> is 'approved', set <code>completedAt</code> to the current timestamp.</li><li>Audit-log the deliverable status update using <code>ctx.audit.log</code>, including the deliverable ID and new status.</li><li>Return the updated <code>Deliverable</code> record.</li></ol><h4>Entities</h4><ul><li>Deliverable</li></ul>",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "leadPoint", "stump" ],
+  "functionName" : "update_deliverable_status"
+}

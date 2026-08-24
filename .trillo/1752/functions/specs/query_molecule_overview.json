@@ -1,0 +1,8 @@
+{
+  "name" : "queryMoleculeOverview",
+  "shortDescription" : "Retrieves a comprehensive overview of a Molecule, including its quadrants, status, and associated sessions.",
+  "description" : "<h4>Overview</h4><p>Fetches detailed information about a specific <code>Molecule</code>, including its basic attributes, associated <code>Quadrant</code>s, and high-level status.</p><h4>Intended use</h4><p>Called by the Molecule Dashboard UI or an AI agent to display a summary of a Molecule. Parameter is <code>moleculeId</code>.</p><h4>Logic</h4><ol><li>Retrieve the <code>Molecule</code> record using <code>params.moleculeId</code> via <code>ctx.data.get</code>. If not found, return an error.</li><li>Query <code>Quadrant</code> entities associated with <code>params.moleculeId</code> using <code>ctx.data.query</code>.</li><li>Query <code>Session</code> entities associated with <code>params.moleculeId</code> using <code>ctx.data.query</code>.</li><li>Combine the <code>Molecule</code> data with its <code>Quadrant</code>s and <code>Session</code>s into a single response object.</li><li>Return the combined data.</li></ol><h4>Entities</h4><ul><li>Molecule</li><li>Quadrant</li><li>Session</li></ul>",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "leadPoint", "stump" ],
+  "functionName" : "query_molecule_overview"
+}

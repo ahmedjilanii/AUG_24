@@ -1,0 +1,109 @@
+{
+  "name" : "MedicalRecord",
+  "description" : "Stores a patient's electronic health record entries, including visit details, diagnoses, treatments, and prescriptions.",
+  "ownership" : "user",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "doctor" : [ "create", "read", "update", "delete" ],
+    "patient" : [ "read", "update" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "patientId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "pii" : true,
+    "phi" : true,
+    "representsOwnership" : true,
+    "createOnly" : true,
+    "description" : "Owning patient's User ID. Set automatically on create from the authenticated user (if patient creates) or derived from the patient linked to the doctor's action; only the owning patient or an admin/doctor may update/delete."
+  }, {
+    "name" : "doctorId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "description" : "ID of the doctor who authored this medical record entry (references Doctor.idOfUser)."
+  }, {
+    "name" : "visitDate",
+    "type" : "date",
+    "required" : true,
+    "indexed" : true,
+    "phi" : true,
+    "description" : "The date of the patient's visit or when the record entry was made."
+  }, {
+    "name" : "diagnosis",
+    "type" : "text",
+    "required" : true,
+    "phi" : true,
+    "encrypt" : true,
+    "sensitive" : true,
+    "searchable" : true,
+    "description" : "The diagnosis recorded for the patient."
+  }, {
+    "name" : "treatment",
+    "type" : "text",
+    "phi" : true,
+    "encrypt" : true,
+    "sensitive" : true,
+    "searchable" : true,
+    "description" : "The treatment plan prescribed or administered."
+  }, {
+    "name" : "prescription",
+    "type" : "text",
+    "phi" : true,
+    "encrypt" : true,
+    "sensitive" : true,
+    "listHidden" : true,
+    "description" : "Details of any medications prescribed."
+  }, {
+    "name" : "notes",
+    "type" : "text",
+    "phi" : true,
+    "encrypt" : true,
+    "sensitive" : true,
+    "listHidden" : true,
+    "description" : "Clinical notes related to the patient's visit or condition."
+  }, {
+    "name" : "recordType",
+    "type" : "string",
+    "length" : 50,
+    "indexed" : true,
+    "enumValues" : "visit_note,lab_result,imaging_report,prescription",
+    "description" : "The type of medical record entry."
+  }, {
+    "name" : "status",
+    "type" : "string",
+    "length" : 50,
+    "indexed" : true,
+    "enumValues" : "draft,final,amended",
+    "defaultValue" : "draft",
+    "description" : "The current status of the medical record entry."
+  } ]
+}

@@ -1,0 +1,8 @@
+{
+  "name" : "queryQuadrantOverview",
+  "shortDescription" : "Fetches detailed information for a specific Quadrant, including linked categories and assigned Stump participants.",
+  "description" : "<h4>Overview</h4><p>Retrieves comprehensive details for a specific <code>Quadrant</code>, including its associated <code>Category</code>s and <code>QuadrantParticipant</code>s.</p><h4>Intended use</h4><p>Called by the Quadrant and Participant Detail View UI or an AI agent to display detailed information about a quadrant. Parameter is <code>quadrantId</code>.</p><h4>Logic</h4><ol><li>Retrieve the <code>Quadrant</code> record using <code>params.quadrantId</code> via <code>ctx.data.get</code>. If not found, return an error.</li><li>Query <code>QuadrantCategory</code> entities linked to <code>params.quadrantId</code> using <code>ctx.data.query</code>.</li><li>For each <code>QuadrantCategory</code>, retrieve the associated <code>Category</code> details using <code>ctx.data.get</code>.</li><li>Query <code>QuadrantParticipant</code> entities linked to <code>params.quadrantId</code> using <code>ctx.data.query</code>.</li><li>For each <code>QuadrantParticipant</code>, retrieve the associated <code>User</code> (Stump) details using <code>ctx.data.get</code>.</li><li>Combine the <code>Quadrant</code> data with its categories and participants into a single response object.</li><li>Return the combined data.</li></ol><h4>Entities</h4><ul><li>Quadrant</li><li>QuadrantCategory</li><li>Category</li><li>QuadrantParticipant</li><li>User</li></ul>",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "leadPoint", "stump" ],
+  "functionName" : "query_quadrant_overview"
+}

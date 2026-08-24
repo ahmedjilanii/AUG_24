@@ -1,0 +1,90 @@
+{
+  "name" : "Appointment",
+  "description" : "Represents a scheduled or requested patient appointment with a doctor.",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "patient" : [ "read", "update" ],
+    "doctor" : [ "create", "read", "update", "delete" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "patientId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "description" : "ID of the patient for this appointment (references Patient.idOfUser)."
+  }, {
+    "name" : "doctorId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "description" : "ID of the doctor for this appointment (references Doctor.idOfUser)."
+  }, {
+    "name" : "dateTime",
+    "type" : "timestamp",
+    "required" : true,
+    "indexed" : true,
+    "description" : "The scheduled date and time of the appointment."
+  }, {
+    "name" : "status",
+    "type" : "string",
+    "length" : 50,
+    "required" : true,
+    "indexed" : true,
+    "enumValues" : "pending,confirmed,cancelled,completed",
+    "defaultValue" : "pending",
+    "description" : "The current status of the appointment."
+  }, {
+    "name" : "reasonForVisit",
+    "type" : "string",
+    "length" : 255,
+    "searchable" : true,
+    "description" : "The patient's stated reason for the visit."
+  }, {
+    "name" : "notes",
+    "type" : "text",
+    "listHidden" : true,
+    "phi" : true,
+    "encrypt" : true,
+    "sensitive" : true,
+    "description" : "Internal notes about the appointment, typically added by the doctor or admin."
+  }, {
+    "name" : "appointmentType",
+    "type" : "string",
+    "length" : 50,
+    "enumValues" : "consultation,follow_up,check_up,emergency",
+    "description" : "The type of appointment."
+  }, {
+    "name" : "durationMinutes",
+    "type" : "integer",
+    "minValue" : 15,
+    "maxValue" : 240,
+    "description" : "The planned duration of the appointment in minutes."
+  } ]
+}

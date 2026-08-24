@@ -1,0 +1,64 @@
+{
+  "name" : "Quadrant",
+  "description" : "One of the four fixed divisions (Logistics, Operations, External Functions, Internal Objectives) within a Molecule.",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "leadPoint" : [ "read", "update" ],
+    "stump" : [ "read" ],
+    "user" : [ "read" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "moleculeId",
+    "type" : "long",
+    "indexed" : true,
+    "required" : true,
+    "description" : "The ID of the Molecule this Quadrant belongs to."
+  }, {
+    "name" : "name",
+    "type" : "string",
+    "length" : 50,
+    "required" : true,
+    "indexed" : true,
+    "naming" : true,
+    "enumValues" : "Logistics,Operations,External Functions,Internal Objectives",
+    "description" : "The predefined name of the Quadrant."
+  }, {
+    "name" : "description",
+    "type" : "text",
+    "searchable" : true,
+    "listHidden" : true,
+    "description" : "A description of the Quadrant's focus area."
+  }, {
+    "name" : "order",
+    "type" : "integer",
+    "required" : true,
+    "description" : "The display order of the Quadrant within its Molecule."
+  } ]
+}

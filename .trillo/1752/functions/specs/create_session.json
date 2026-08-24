@@ -1,0 +1,8 @@
+{
+  "name" : "createSession",
+  "shortDescription" : "Creates a new session for a Molecule, initiated by a Lead Point, including start and end times.",
+  "description" : "<h4>Overview</h4><p>Creates a new Session record associated with a specific Molecule, setting its initial status and time parameters.</p><h4>Intended use</h4><p>Called by the Lead Point persona from the Session Control Panel UI to initiate a new work session for a Molecule. Parameters include <code>moleculeId</code>, <code>name</code>, <code>startTime</code>, and <code>endTime</code>.</p><h4>Logic</h4><ol><li>Validate that <code>params.moleculeId</code> exists by querying the <code>Molecule</code> entity using <code>ctx.data.get</code>. If not found, return an error.</li><li>Create a new <code>Session</code> record using <code>ctx.data.create</code> with <code>moleculeId</code>, <code>name</code>, <code>startTime</code>, <code>endTime</code>, and <code>idOfUser</code> (from <code>ctx.user_id</code>).</li><li>Audit-log the session creation using <code>ctx.audit.log</code>, including the new session's ID.</li><li>Return the created <code>Session</code> record.</li></ol><h4>Entities</h4><ul><li>Session</li><li>Molecule</li></ul>",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "leadPoint" ],
+  "functionName" : "create_session"
+}

@@ -1,0 +1,8 @@
+{
+  "name" : "syncLISData",
+  "shortDescription" : "Synchronizes lab information and results with an external Laboratory Information System (LIS).",
+  "description" : "<h4>Overview</h4><p>Synchronizes lab information and results with an external Laboratory Information System (LIS). This ensures that patient lab results are available within the portal for doctors and patients.</p><h4>Intended use</h4><p>This function is intended to be invoked by a scheduler (cron job) to periodically synchronize data with the <code>LISSystem</code>. It does not require specific parameters for invocation.</p><h4>Logic</h4><ol><li>Call the <code>LISSystem</code> external service using <code>ctx.service('LISSystem')</code> to fetch new or updated lab results.</li><li>Iterate through the retrieved LIS data.</li><li>For each lab result, identify the corresponding <code>Patient</code> and create or update <code>MedicalRecord</code> entries with the lab information using <code>ctx.data.upsert</code> or <code>ctx.data.create</code>.</li><li>Audit-log the synchronization process with <code>ctx.audit.log</code>, noting any updates or new records.</li></ol><h4>Entities</h4><ul><li>MedicalRecord</li></ul><h4>External Services</h4><ul><li>LISSystem</li></ul>",
+  "invocationMode" : "scheduled",
+  "allowedAppRoles" : [ "system" ],
+  "functionName" : "sync_lis_data"
+}

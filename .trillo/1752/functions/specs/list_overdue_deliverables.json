@@ -1,0 +1,8 @@
+{
+  "name" : "listOverdueDeliverables",
+  "shortDescription" : "Identifies and lists all deliverables that are past their due date and have not yet been marked as approved.",
+  "description" : "<h4>Overview</h4><p>Queries for all <code>Deliverable</code> records that have a <code>dueDate</code> in the past and a <code>status</code> that is not 'approved'.</p><h4>Intended use</h4><p>Primarily called by a scheduler (e.g., daily cron job) to identify overdue deliverables for reporting or notifications. Can also be called by an AI agent. No parameters needed.</p><h4>Logic</h4><ol><li>Get the current date.</li><li>Query <code>Deliverable</code> entities using <code>ctx.data.query</code> with filters: <code>dueDate</code> less than current date, and <code>status</code> not equal to 'approved'.</li><li>Return the list of overdue <code>Deliverable</code> records.</li></ol><h4>Entities</h4><ul><li>Deliverable</li></ul>",
+  "invocationMode" : "scheduled",
+  "allowedAppRoles" : [ "admin", "leadPoint" ],
+  "functionName" : "list_overdue_deliverables"
+}

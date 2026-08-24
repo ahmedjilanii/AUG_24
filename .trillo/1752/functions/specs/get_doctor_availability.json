@@ -1,0 +1,8 @@
+{
+  "name" : "getDoctorAvailability",
+  "shortDescription" : "Retrieves a doctor's available appointment slots based on their clinical schedule and existing bookings.",
+  "description" : "<h4>Overview</h4><p>Retrieves a doctor's available slots based on their clinical schedule and existing appointments. This function helps patients and administrators find suitable times for new bookings.</p><h4>Intended use</h4><p>Called by the UI (patient or admin) to display a doctor's availability for appointment scheduling. The parameters include the doctor ID and a date range. It returns a list of available time slots.</p><h4>Logic</h4><ol><li>Validate the input parameters, ensuring a valid doctor ID and date range are provided.</li><li>Query the <code>Doctor</code> entity to retrieve the doctor's <code>clinicalSchedule</code>.</li><li>Query the <code>Appointment</code> entity to retrieve all existing appointments for the specified doctor within the given date range.</li><li>Process the doctor's <code>clinicalSchedule</code> and existing appointments to calculate and identify available time slots.</li><li>Return a list of available time slots.</li></ol><h4>Entities</h4><ul><li>Doctor</li><li>Appointment</li><li>HospitalSetting</li></ul>",
+  "invocationMode" : "http",
+  "allowedAppRoles" : [ "patient", "doctor", "admin" ],
+  "functionName" : "get_doctor_availability"
+}
