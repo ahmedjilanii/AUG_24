@@ -1,0 +1,88 @@
+{
+  "name" : "UIFlow",
+  "description" : "Adaptive-UI Flow (plan-38/43, WS1). A guarded multi-step graph over Views — e.g. an 'Add Task' form that on success routes back to the list. Design-time authored in Trillo AI (TrilloMD row with modelClassName=\"UIFlow\"), versioned + GitHub-syncable + promotable; the deploy flattens each authored content blob into this queryable per-app table via DeployAppMetadata.bootstrapUIFlows (upsert by uid, reconcile orphans). AOS serves it read-only via /ui/flow/{uid} (role-scoped, returns the flow + its Views via UIView.parentUID). The flow's step Views live in UIView (WHERE parentUID = this uid); flat, no nesting. dataApi: open + admin read-only ACL keeps generic CRUD off (edits in Trillo AI, ship via redeploy); the serve-API reads via raised-privilege DataStore.",
+  "dataApi" : "open",
+  "ownership" : "none",
+  "systemClass" : true,
+  "acl" : {
+    "admin" : [ "read" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "tenantId",
+    "type" : "biginteger",
+    "defaultValue" : "-1",
+    "indexed" : true,
+    "persistent" : true,
+    "systemAttr" : true,
+    "platform" : true
+  }, {
+    "name" : "uid",
+    "type" : "string",
+    "length" : 100,
+    "indexed" : true,
+    "persistent" : true,
+    "description" : "Stable identifier for this Flow — the deploy upsert key and the value UIView.parentUID points at. Equals the authoring TrilloMD row's name. Composite unique on (tenantId, uid), enforced at the application layer.",
+    "platform" : true
+  }, {
+    "name" : "title",
+    "type" : "string",
+    "length" : 200,
+    "persistent" : true,
+    "description" : "Human-facing label for the flow.",
+    "platform" : true
+  }, {
+    "name" : "role",
+    "type" : "string",
+    "length" : 30,
+    "indexed" : true,
+    "persistent" : true,
+    "description" : "Primary serving key — the role this Flow is served to. Coarse exec role (guest/user/admin/system) or an app role name; the serve-API filters on it.",
+    "platform" : true
+  }, {
+    "name" : "appRoles",
+    "type" : "text",
+    "persistent" : true,
+    "description" : "Optional JSON array of additional app-role names this Flow is also served to (secondary gate beyond `role`).",
+    "platform" : true
+  }, {
+    "name" : "entryViewUid",
+    "type" : "string",
+    "length" : 100,
+    "persistent" : true,
+    "description" : "The UIView.uid the flow starts at. Its remaining step Views are UIView rows WHERE parentUID = this flow's uid.",
+    "platform" : true
+  }, {
+    "name" : "transitions",
+    "type" : "text",
+    "persistent" : true,
+    "description" : "JSON payload — the guarded transition graph between the flow's Views (e.g. on a Form's Direct-API success, a guarded then.goto to another View). Interpreted by the frontend; not queried.",
+    "platform" : true
+  } ]
+}

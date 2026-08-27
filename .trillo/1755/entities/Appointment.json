@@ -1,0 +1,84 @@
+{
+  "name" : "Appointment",
+  "description" : "Represents a scheduled medical appointment between a patient and a doctor.",
+  "ownership" : "user",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "doctor" : [ "create", "read", "update", "delete" ],
+    "patient" : [ "read", "update", "delete" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "idOfUser",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "representsOwnership" : true,
+    "createOnly" : true,
+    "description" : "Owning user (patient) — set automatically on create from the authenticated user; only the owning patient or an admin/doctor may update or delete their appointment."
+  }, {
+    "name" : "patientId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "description" : "Foreign key to the Patient entity for the patient attending the appointment."
+  }, {
+    "name" : "doctorId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "description" : "Foreign key to the Doctor entity for the doctor conducting the appointment."
+  }, {
+    "name" : "appointmentDateTime",
+    "type" : "timestamptz",
+    "required" : true,
+    "indexed" : true,
+    "description" : "The scheduled date and time of the appointment."
+  }, {
+    "name" : "status",
+    "type" : "string",
+    "length" : 50,
+    "indexed" : true,
+    "enumValues" : "scheduled,confirmed,cancelled,completed,rescheduled",
+    "defaultValue" : "scheduled",
+    "description" : "The current status of the appointment."
+  }, {
+    "name" : "reason",
+    "type" : "string",
+    "required" : true,
+    "searchable" : true,
+    "description" : "The reason for the appointment."
+  }, {
+    "name" : "notes",
+    "type" : "text",
+    "searchable" : true,
+    "listHidden" : true,
+    "description" : "Additional notes or details about the appointment."
+  } ]
+}

@@ -1,0 +1,9 @@
+{
+  "name" : "sendMessage",
+  "shortDescription" : "Sends a secure and auditable message between a patient and a doctor, handling encryption and storing content.",
+  "description" : "<h4>Overview</h4><p>Facilitates secure, encrypted, and auditable communication between patients and their assigned doctors, storing message content and triggering external notifications.</p><h4>Intended use</h4><p>Called by the messaging UI when a patient or doctor sends a new message. The UI provides parameters such as <code>senderId</code>, <code>receiverId</code>, <code>conversationId</code>, <code>content</code>, and <code>isEncrypted</code>.</p><h4>Logic</h4><ol><li>Validate that <code>params.senderId</code> and <code>params.receiverId</code> correspond to valid <code>Patient</code> and <code>Doctor</code> entities respectively.</li><li>Encrypt the <code>params.content</code> if <code>params.isEncrypted</code> is true.</li><li>Create a new <code>Message</code> record using <code>ctx.data.create</code> with <code>senderId</code>, <code>receiverId</code>, <code>conversationId</code>, current <code>timestamp</code>, encrypted <code>content</code>, and <code>isEncrypted</code> status.</li><li>Audit-log the message sending using <code>ctx.audit.log</code>, including sender, receiver, and conversation ID.</li><li>Trigger the <code>sendMessageWebhook</code> function to send external notifications about the new message.</li><li>Return the created <code>Message</code> record.</li></ol><h4>Entities</h4><ul><li>Message</li><li>Patient</li><li>Doctor</li></ul><h4>External Services</h4><ul><li>Webhook</li></ul>",
+  "invocationMode" : "http",
+  "role" : "user",
+  "allowedAppRoles" : [ "patient", "doctor" ],
+  "functionName" : "send_message"
+}

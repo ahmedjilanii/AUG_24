@@ -1,0 +1,9 @@
+{
+  "name" : "logPHIReadAccess",
+  "shortDescription" : "Records an audit entry for every access to Protected Health Information (PHI) in MedicalRecords.",
+  "description" : "<h4>Overview</h4><p>Creates an immutable audit log entry whenever a <code>MedicalRecord</code> (containing PHI) is accessed, detailing who accessed it and when, for compliance.</p><h4>Intended use</h4><p>Invoked as an event handler whenever a <code>MedicalRecord</code> is read by any user or system process. It receives context about the accessed record and the accessor.</p><h4>Logic</h4><ol><li>Extract the <code>idOfUser</code> (accessor), <code>patientId</code>, and <code>medicalRecordId</code> from the event context.</li><li>Create an <code>AuditLog</code> entry using <code>ctx.audit.log</code> with <code>action='read'</code>, <code>resourceType='MedicalRecord'</code>, the <code>medicalRecordId</code> as <code>resourceId</code>, and a <code>context</code> dictionary including <code>patientId</code> and <code>accessorId</code>.</li><li>Ensure the log entry is marked with a <code>type='CRITICAL'</code> for PHI access to highlight its importance for compliance.</li></ol><h4>Entities</h4><ul><li>AuditLog</li><li>MedicalRecord</li></ul>",
+  "invocationMode" : "event",
+  "role" : "system",
+  "allowedAppRoles" : [ "system" ],
+  "functionName" : "log_phi_read_access"
+}

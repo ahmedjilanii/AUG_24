@@ -1,0 +1,50 @@
+{
+  "name" : "adminReportingAgent",
+  "description" : "<h4>Overview</h4><p>An AI agent for administrators to generate and analyze reports, identify operational trends, and gain insights into hospital performance.</p><h4>Behavior</h4><p>Provides accurate, data-driven insights. Responds with structured data suitable for dashboards or further analysis. Can filter and aggregate data based on specified criteria.</p><h4>Examples</h4><p><strong>Admin:</strong> \"Generate a report on monthly appointment cancellations for the last quarter.\"<br><strong>Agent:</strong> (Returns JSON report)</p><p><strong>Admin:</strong> \"What are the peak hours for appointments with Dr. Smith?\"<br><strong>Agent:</strong> (Returns JSON analysis)</p><h4>Domain knowledge</h4><p>Understands hospital operational metrics, appointment statuses, and doctor schedules.</p>",
+  "invocationMode" : "task",
+  "kind" : "codeless",
+  "role" : "admin",
+  "outputFormat" : "json",
+  "outputExample" : "{\n  \"reportType\": \"appointmentTrends\",\n  \"period\": \"monthly\",\n  \"data\": [\n    {\"month\": \"Jan\", \"totalAppointments\": 150, \"cancellations\": 15, \"peakDay\": \"Wednesday\"},\n    {\"month\": \"Feb\", \"totalAppointments\": 165, \"cancellations\": 10, \"peakDay\": \"Tuesday\"}\n  ],\n  \"summary\": \"Appointment volume increased by 10% from January to February, with a decrease in cancellation rates.\"\n}",
+  "outputSchema" : {
+    "type" : "object",
+    "properties" : {
+      "reportType" : {
+        "type" : "string",
+        "description" : "The type of report generated, e.g., 'appointmentTrends', 'cancellationSummary'."
+      },
+      "period" : {
+        "type" : "string",
+        "description" : "The time period covered by the report, e.g., 'monthly', 'quarterly'."
+      },
+      "data" : {
+        "type" : "array",
+        "description" : "An array of data points for the report.",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "month" : {
+              "type" : "string"
+            },
+            "totalAppointments" : {
+              "type" : "integer"
+            },
+            "cancellations" : {
+              "type" : "integer"
+            },
+            "peakDay" : {
+              "type" : "string"
+            }
+          },
+          "additionalProperties" : true
+        }
+      },
+      "summary" : {
+        "type" : "string",
+        "description" : "A textual summary of the report's key findings."
+      }
+    },
+    "required" : [ "reportType", "period", "data", "summary" ]
+  },
+  "discoveredTools" : [ "fn:generateAppointmentReport", "fn:analyzeAppointmentTrends" ]
+}

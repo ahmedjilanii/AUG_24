@@ -1,0 +1,96 @@
+{
+  "name" : "MedicalRecord",
+  "description" : "Stores a patient's medical record entry or visit summary, potentially including diagnoses, treatments, and notes.",
+  "ownership" : "user",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "doctor" : [ "create", "read", "update", "delete" ],
+    "patient" : [ "read", "update" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "idOfUser",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "representsOwnership" : true,
+    "createOnly" : true,
+    "description" : "Owning user (patient) — set automatically on create from the authenticated user; only the owning patient or an admin/doctor may read or update their medical record."
+  }, {
+    "name" : "patientId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "phi" : true,
+    "description" : "Foreign key to the Patient entity this record belongs to."
+  }, {
+    "name" : "doctorId",
+    "type" : "long",
+    "indexed" : true,
+    "phi" : true,
+    "description" : "Foreign key to the Doctor entity who authored or reviewed this record."
+  }, {
+    "name" : "recordDate",
+    "type" : "date",
+    "required" : true,
+    "indexed" : true,
+    "phi" : true,
+    "description" : "The date the medical record entry was created or updated."
+  }, {
+    "name" : "recordType",
+    "type" : "string",
+    "length" : 50,
+    "required" : true,
+    "indexed" : true,
+    "enumValues" : "diagnosis,treatment,note,lab_result,prescription,summary",
+    "description" : "The type of medical record entry (e.g., diagnosis, treatment, note)."
+  }, {
+    "name" : "content",
+    "type" : "text",
+    "required" : true,
+    "phi" : true,
+    "sensitive" : true,
+    "searchable" : true,
+    "listHidden" : true,
+    "description" : "The detailed content of the medical record entry."
+  }, {
+    "name" : "diagnosisCode",
+    "type" : "string",
+    "length" : 50,
+    "phi" : true,
+    "searchable" : true,
+    "description" : "Medical diagnosis code (e.g., ICD-10)."
+  }, {
+    "name" : "treatmentPlan",
+    "type" : "text",
+    "phi" : true,
+    "listHidden" : true,
+    "description" : "Details of the treatment plan prescribed."
+  } ]
+}

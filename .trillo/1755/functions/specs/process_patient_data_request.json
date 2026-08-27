@@ -1,0 +1,9 @@
+{
+  "name" : "processPatientDataRequest",
+  "shortDescription" : "Handles patient requests for data access, correction, or deletion, ensuring privacy compliance.",
+  "description" : "<h4>Overview</h4><p>Manages patient requests to access, correct, or delete their personal and medical data, updating <code>ConsentRecord</code> status and ensuring regulatory compliance.</p><h4>Intended use</h4><p>Called by the patient-facing UI when a patient submits a data request, or by an administrator processing such a request. Parameters include <code>patientId</code>, <code>consentType</code>, and the requested action.</p><h4>Logic</h4><ol><li>Retrieve the <code>ConsentRecord</code> associated with the <code>params.patientId</code> and <code>params.consentType</code>.</li><li>Based on the requested action (e.g., 'data_access', 'data_correction', 'data_deletion'), perform necessary operations:<ul><li>For access: Retrieve relevant <code>Patient</code> and <code>MedicalRecord</code> data.</li><li>For correction: Update specific fields in <code>Patient</code> or <code>MedicalRecord</code> as per the request.</li><li>For deletion: Soft-delete relevant <code>Patient</code> or <code>MedicalRecord</code> entries, or anonymize data.</li></ul></li><li>Update the <code>ConsentRecord.status</code> to reflect the processing of the request (e.g., 'pending', 'granted', 'revoked') using <code>ctx.data.update</code>.</li><li>Audit-log the data request and its resolution using <code>ctx.audit.log</code> for compliance purposes.</li><li>Notify the patient of the request status via <code>ctx.email.send_template</code>.</li><li>Return the updated <code>ConsentRecord</code> status.</li></ol><h4>Entities</h4><ul><li>ConsentRecord</li><li>Patient</li><li>MedicalRecord</li></ul>",
+  "invocationMode" : "http",
+  "role" : "user",
+  "allowedAppRoles" : [ "patient", "admin" ],
+  "functionName" : "process_patient_data_request"
+}

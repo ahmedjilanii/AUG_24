@@ -1,0 +1,9 @@
+{
+  "name" : "cancelAppointment",
+  "shortDescription" : "Cancels an existing patient appointment and updates the doctor's availability.",
+  "description" : "<h4>Overview</h4><p>Allows a patient or doctor to cancel a scheduled appointment, updating its status and potentially freeing up the doctor's time slot.</p><h4>Intended use</h4><p>Called by the patient or doctor UI when an appointment needs to be cancelled. It requires <code>appointmentId</code>.</p><h4>Logic</h4><ol><li>Retrieve the <code>Appointment</code> record using <code>params.appointmentId</code>.</li><li>Verify that the authenticated user is either the patient associated with the appointment, the doctor, or an admin.</li><li>Update the <code>Appointment.status</code> to 'cancelled' using <code>ctx.data.update</code>.</li><li>(Optional): Update the <code>Doctor.availabilitySchedule</code> to reflect the newly available slot, if the system manages granular availability.</li><li>Send a cancellation confirmation email to both the patient and the doctor using <code>ctx.email.send_template</code>.</li><li>Audit-log the appointment cancellation using <code>ctx.audit.log</code>, noting who initiated the cancellation.</li><li>Return the updated <code>Appointment</code> record.</li></ol><h4>Entities</h4><ul><li>Appointment</li><li>Doctor</li><li>Patient</li></ul>",
+  "invocationMode" : "http",
+  "role" : "user",
+  "allowedAppRoles" : [ "patient", "doctor" ],
+  "functionName" : "cancel_appointment"
+}

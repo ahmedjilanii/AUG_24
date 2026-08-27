@@ -1,0 +1,582 @@
+[ {
+  "id" : "login",
+  "title" : "User Login",
+  "description" : "Allows users to log in to the system using their credentials. Provides options for new users to sign up and for existing users to reset their password.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The user navigates to the application's login page.",
+    "_uid_" : "A.0.1.2"
+  }, {
+    "value" : "The user enters their registered email or username and password into the respective fields.",
+    "_uid_" : "A.0.1.3"
+  }, {
+    "value" : "The user clicks the 'Login' button.",
+    "_uid_" : "A.0.1.4"
+  }, {
+    "value" : "If login is successful:",
+    "subitems" : [ "If the user has a single role, they are redirected to their default landing page (e.g., Patient Dashboard, Doctor Dashboard, Admin Dashboard).", "If the user has multiple roles, they are presented with a 'roleSelection' view to choose their role for the current session." ],
+    "_uid_" : "A.0.1.5"
+  }, {
+    "value" : "If login fails due to incorrect credentials, an error message is displayed.",
+    "_uid_" : "A.0.1.6"
+  }, {
+    "value" : "The user can click 'Sign Up' to create a new account (leads to signup scenario).",
+    "_uid_" : "A.0.1.7"
+  }, {
+    "value" : "The user can click 'Forgot Password' to initiate the password reset process (leads to forgotPassword scenario).",
+    "_uid_" : "A.0.1.8"
+  } ],
+  "roles" : [ "none" ],
+  "_uid_" : "A.0.156"
+}, {
+  "id" : "signup",
+  "title" : "User Sign Up",
+  "description" : "Enables new users to register for an account, providing their details and selecting an appropriate role (e.g., patient).",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The user navigates to the 'Sign Up' page, typically from the login page.",
+    "_uid_" : "A.0.9.10"
+  }, {
+    "value" : "The user provides required personal information such as first name, last name, email address, and sets a password.",
+    "_uid_" : "A.0.9.11"
+  }, {
+    "value" : "The user selects their desired role from a dropdown list. (For initial signup, this would typically be 'patient' as 'admin' and 'none' are restricted).",
+    "_uid_" : "A.0.9.12"
+  }, {
+    "value" : "The user agrees to terms and conditions/privacy policy (if applicable).",
+    "_uid_" : "A.0.9.13"
+  }, {
+    "value" : "The user clicks the 'Register' or 'Sign Up' button.",
+    "_uid_" : "A.0.9.14"
+  }, {
+    "value" : "The system sends a verification email to the provided address.",
+    "_uid_" : "A.0.9.15"
+  }, {
+    "value" : "The user is redirected to a confirmation page, instructing them to check their email for a verification link.",
+    "_uid_" : "A.0.9.16"
+  } ],
+  "roles" : [ "none" ],
+  "_uid_" : "A.0.164"
+}, {
+  "id" : "forgotPassword",
+  "title" : "Forgot Password",
+  "description" : "Allows users to request a password reset link if they have forgotten their password.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The user navigates to the 'Forgot Password' page, typically from the login page.",
+    "_uid_" : "A.0.17.18"
+  }, {
+    "value" : "The user enters their registered email address.",
+    "_uid_" : "A.0.17.19"
+  }, {
+    "value" : "The user clicks the 'Submit' or 'Reset Password' button.",
+    "_uid_" : "A.0.17.20"
+  }, {
+    "value" : "The system sends a password reset link to the provided email address.",
+    "_uid_" : "A.0.17.21"
+  }, {
+    "value" : "The user is redirected to a confirmation page, instructing them to check their email for the reset link.",
+    "_uid_" : "A.0.17.22"
+  } ],
+  "roles" : [ "none" ],
+  "_uid_" : "A.0.172"
+}, {
+  "id" : "resetPassword",
+  "title" : "Reset Password",
+  "description" : "Enables a user to set a new password after receiving a password reset link via email.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The user receives an email with a password reset link and clicks on it.",
+    "_uid_" : "A.0.23.24"
+  }, {
+    "value" : "The user is directed to the 'Reset Password' page, where the reset token is typically pre-filled or embedded in the URL.",
+    "_uid_" : "A.0.23.25"
+  }, {
+    "value" : "The user enters a new password and confirms it by re-entering it.",
+    "_uid_" : "A.0.23.26"
+  }, {
+    "value" : "The user clicks the 'Set New Password' or 'Reset' button.",
+    "_uid_" : "A.0.23.27"
+  }, {
+    "value" : "If the password reset is successful, the user is notified and typically redirected to the login page to sign in with their new password.",
+    "_uid_" : "A.0.23.28"
+  }, {
+    "value" : "If the reset token is invalid or expired, an error message is displayed, and the user may be prompted to request a new reset link.",
+    "_uid_" : "A.0.23.29"
+  } ],
+  "roles" : [ "none" ],
+  "_uid_" : "A.0.178"
+}, {
+  "id" : "adminDashboard",
+  "title" : "Admin Dashboard Overview",
+  "description" : "Provides administrators with a central overview of key hospital operations, quick access to management modules, and system health indicators.",
+  "landingScenario" : true,
+  "steps" : [ {
+    "value" : "Login leads to Admin Dashboard scenario. If the administrator has multiple roles, they select 'admin' role from the role selection screen.",
+    "_uid_" : "A.0.30.31"
+  }, {
+    "value" : "The administrator views a summary of system status, such as active users, pending appointments, and system alerts.",
+    "_uid_" : "A.0.30.32"
+  }, {
+    "value" : "The administrator can navigate to User Management, Appointment Management, Reporting, Hospital Settings, or Audit Logs modules using a navigation menu or dashboard widgets.",
+    "_uid_" : "A.0.30.33"
+  } ],
+  "roles" : [ "admin" ],
+  "_uid_" : "A.0.185"
+}, {
+  "id" : "manageUsers",
+  "title" : "Manage User Accounts",
+  "description" : "Allows administrators to create, view, modify, and deactivate user accounts for both patients and doctors, and assign roles.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The administrator navigates to the User Management module from the Admin Dashboard.",
+    "_uid_" : "A.0.34.35"
+  }, {
+    "value" : "The administrator views a list of all registered users (patients, doctors, and other administrators).",
+    "_uid_" : "A.0.34.36"
+  }, {
+    "value" : "The administrator can search and filter users by various criteria (e.g., role, status, name, email).",
+    "_uid_" : "A.0.34.37"
+  }, {
+    "value" : "The administrator can select a user to view their profile details.",
+    "_uid_" : "A.0.34.38"
+  }, {
+    "value" : "The administrator can create a new user account, providing necessary details and assigning one or more roles (e.g., patient, doctor, admin).",
+    "_uid_" : "A.0.34.39"
+  }, {
+    "value" : "The administrator can edit an existing user's profile, including updating personal information, contact details, and modifying assigned roles.",
+    "_uid_" : "A.0.34.40"
+  }, {
+    "value" : "The administrator can deactivate or reactivate a user account.",
+    "_uid_" : "A.0.34.41"
+  } ],
+  "roles" : [ "admin" ],
+  "_uid_" : "A.0.189"
+}, {
+  "id" : "adminManageAppointments",
+  "title" : "Oversee All Appointments",
+  "description" : "Enables administrators to view, filter, and manage all appointment activities across the hospital, resolve conflicts, and monitor scheduling efficiency.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The administrator navigates to the Appointment Management module from the Admin Dashboard.",
+    "_uid_" : "A.0.42.43"
+  }, {
+    "value" : "The administrator views a comprehensive list of all appointments (upcoming, past, cancelled, pending) across all doctors and patients.",
+    "_uid_" : "A.0.42.44"
+  }, {
+    "value" : "The administrator can filter appointments by doctor, patient, date range, status, and specialty.",
+    "_uid_" : "A.0.42.45"
+  }, {
+    "value" : "The administrator can view detailed information for a specific appointment.",
+    "_uid_" : "A.0.42.46"
+  }, {
+    "value" : "The administrator can modify an appointment's status (e.g., confirm, cancel, reschedule) or details.",
+    "_uid_" : "A.0.42.47"
+  }, {
+    "value" : "The administrator can identify and resolve potential scheduling conflicts.",
+    "_uid_" : "A.0.42.48"
+  } ],
+  "roles" : [ "admin" ],
+  "_uid_" : "A.0.197"
+}, {
+  "id" : "generateReports",
+  "title" : "Generate Operational Reports",
+  "description" : "Allows administrators to generate configurable reports and dashboards on appointment activity, user engagement, and communication metrics, with options to export data.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The administrator navigates to the Reporting & Analytics Dashboard from the Admin Dashboard.",
+    "_uid_" : "A.0.49.50"
+  }, {
+    "value" : "The administrator selects a report type (e.g., appointment trends, user activity, doctor utilization, communication metrics).",
+    "_uid_" : "A.0.49.51"
+  }, {
+    "value" : "The administrator defines report parameters and filters (e.g., date range, specific doctor/patient, status filters, data aggregation level).",
+    "_uid_" : "A.0.49.52"
+  }, {
+    "value" : "The administrator generates and views the report or dashboard, which displays data visually (charts, tables).",
+    "_uid_" : "A.0.49.53"
+  }, {
+    "value" : "The administrator can export the report data in CSV or PDF format.",
+    "_uid_" : "A.0.49.54"
+  } ],
+  "roles" : [ "admin" ],
+  "_uid_" : "A.0.204"
+}, {
+  "id" : "configureHospitalSettings",
+  "title" : "Manage Hospital Configuration",
+  "description" : "Enables administrators to manage and update hospital-wide configurable settings, including operating hours, holiday schedules, and general operational policies.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The administrator navigates to the Hospital Settings Configuration module from the Admin Dashboard.",
+    "_uid_" : "A.0.55.56"
+  }, {
+    "value" : "The administrator views current hospital settings, such as operating hours, defined holidays, and system-wide policy documents.",
+    "_uid_" : "A.0.55.57"
+  }, {
+    "value" : "The administrator can edit existing settings, such as modifying operating hours or holiday dates.",
+    "_uid_" : "A.0.55.58"
+  }, {
+    "value" : "The administrator can add new settings or upload new policy documents.",
+    "_uid_" : "A.0.55.59"
+  }, {
+    "value" : "The administrator saves the changes to the hospital settings.",
+    "_uid_" : "A.0.55.60"
+  } ],
+  "roles" : [ "admin" ],
+  "_uid_" : "A.0.210"
+}, {
+  "id" : "viewPhiAuditLogs",
+  "title" : "View Protected Health Information (PHI) Access Audit Logs",
+  "description" : "Allows administrators to review immutable audit logs of all access to Protected Health Information (PHI) for compliance purposes.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The administrator navigates to the Audit Log Viewer module (inferred from 'PHI Access Audit Logging' functional requirement).",
+    "_uid_" : "A.0.61.62"
+  }, {
+    "value" : "The administrator views a chronological list of PHI access events.",
+    "_uid_" : "A.0.61.63"
+  }, {
+    "value" : "The administrator can filter audit logs by user, date/time range, patient, type of access (e.g., read, update), and data accessed.",
+    "_uid_" : "A.0.61.64"
+  }, {
+    "value" : "The administrator can view detailed information for each audit entry, including who accessed what, when, and from which source.",
+    "_uid_" : "A.0.61.65"
+  }, {
+    "value" : "The administrator can export audit log data for compliance reporting or further analysis.",
+    "_uid_" : "A.0.61.66"
+  } ],
+  "roles" : [ "admin" ],
+  "_uid_" : "A.0.216"
+}, {
+  "id" : "patientDashboard",
+  "title" : "Patient Dashboard Overview",
+  "description" : "Provides patients with a personalized overview of their health information, including upcoming appointments, recent medical records, and quick access to profile management and messaging.",
+  "landingScenario" : true,
+  "steps" : [ {
+    "value" : "Login leads to Patient Dashboard scenario. If the patient has multiple roles, they select 'patient' role from the role selection screen.",
+    "_uid_" : "A.0.67.68"
+  }, {
+    "value" : "The patient views a summary of their upcoming appointments.",
+    "_uid_" : "A.0.67.69"
+  }, {
+    "value" : "The patient sees a summary of recent medical records or visit summaries.",
+    "_uid_" : "A.0.67.70"
+  }, {
+    "value" : "The patient can quickly access options to manage their profile, schedule appointments, view medical records, or send messages to their doctor.",
+    "_uid_" : "A.0.67.71"
+  } ],
+  "roles" : [ "patient" ],
+  "_uid_" : "A.0.222"
+}, {
+  "id" : "managePatientProfile",
+  "title" : "Manage Patient Profile",
+  "description" : "Allows patients to securely update their personal information, contact details, and other profile-related data.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The patient navigates to the 'Profile Management' section, typically from the Patient Dashboard or a navigation menu.",
+    "_uid_" : "A.0.72.73"
+  }, {
+    "value" : "The patient views their current personal information, such as name, date of birth, contact details, and emergency contacts.",
+    "_uid_" : "A.0.72.74"
+  }, {
+    "value" : "The patient can edit fields like address, phone number, email, and emergency contact information.",
+    "_uid_" : "A.0.72.75"
+  }, {
+    "value" : "The patient saves the updated profile information.",
+    "_uid_" : "A.0.72.76"
+  }, {
+    "value" : "The system confirms the successful update.",
+    "_uid_" : "A.0.72.77"
+  } ],
+  "roles" : [ "patient" ],
+  "_uid_" : "A.0.227"
+}, {
+  "id" : "scheduleAppointment",
+  "title" : "Schedule New Appointment",
+  "description" : "Enables patients to book new medical appointments with available doctors, respecting doctor availability.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The patient navigates to the 'Schedule Appointment' section, typically from the Patient Dashboard or a navigation menu.",
+    "_uid_" : "A.0.78.79"
+  }, {
+    "value" : "The patient selects a specialty or a specific doctor.",
+    "_uid_" : "A.0.78.80"
+  }, {
+    "value" : "The patient selects a preferred date range or specific date for the appointment.",
+    "_uid_" : "A.0.78.81"
+  }, {
+    "value" : "The system displays available time slots based on doctor availability and selected criteria.",
+    "_uid_" : "A.0.78.82"
+  }, {
+    "value" : "The patient chooses an available time slot.",
+    "_uid_" : "A.0.78.83"
+  }, {
+    "value" : "The patient provides a reason for the appointment.",
+    "_uid_" : "A.0.78.84"
+  }, {
+    "value" : "The patient reviews the appointment details and confirms the booking.",
+    "_uid_" : "A.0.78.85"
+  }, {
+    "value" : "The system confirms the appointment and provides a confirmation message.",
+    "_uid_" : "A.0.78.86"
+  } ],
+  "roles" : [ "patient" ],
+  "_uid_" : "A.0.233"
+}, {
+  "id" : "viewManageAppointments",
+  "title" : "View and Manage Appointments",
+  "description" : "Allows patients to view their upcoming and past appointments, and cancel existing appointments.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The patient navigates to the 'My Appointments' section, typically from the Patient Dashboard or a navigation menu.",
+    "_uid_" : "A.0.87.88"
+  }, {
+    "value" : "The patient views a list of their upcoming appointments, including date, time, doctor, and reason.",
+    "_uid_" : "A.0.87.89"
+  }, {
+    "value" : "The patient can filter or sort appointments (e.g., by upcoming, past, cancelled).",
+    "_uid_" : "A.0.87.90"
+  }, {
+    "value" : "The patient selects an upcoming appointment to view its details.",
+    "_uid_" : "A.0.87.91"
+  }, {
+    "value" : "From the appointment details, the patient can choose to cancel the appointment.",
+    "_uid_" : "A.0.87.92"
+  }, {
+    "value" : "The patient confirms the cancellation.",
+    "_uid_" : "A.0.87.93"
+  }, {
+    "value" : "The system updates the appointment status and provides a confirmation message.",
+    "_uid_" : "A.0.87.94"
+  } ],
+  "roles" : [ "patient" ],
+  "_uid_" : "A.0.242"
+}, {
+  "id" : "accessMedicalRecords",
+  "title" : "Access Medical Records",
+  "description" : "Enables patients to securely view their medical records and visit summaries, ensuring compliance with data privacy regulations.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The patient navigates to the 'Medical Records' section, typically from the Patient Dashboard or a navigation menu.",
+    "_uid_" : "A.0.95.96"
+  }, {
+    "value" : "The patient views a list of their medical records or visit summaries, sorted chronologically.",
+    "_uid_" : "A.0.95.97"
+  }, {
+    "value" : "The patient can filter or search for specific records (e.g., by date, doctor, type of visit).",
+    "_uid_" : "A.0.95.98"
+  }, {
+    "value" : "The patient selects a specific record to view its detailed content, including diagnoses, treatments, and notes.",
+    "_uid_" : "A.0.95.99"
+  }, {
+    "value" : "The patient can download or print the medical record if the option is available.",
+    "_uid_" : "A.0.95.100"
+  } ],
+  "roles" : [ "patient" ],
+  "_uid_" : "A.0.250"
+}, {
+  "id" : "securePatientDoctorMessaging",
+  "title" : "Secure Patient-Doctor Messaging",
+  "description" : "Provides a secure, encrypted, and auditable messaging channel for confidential communication between patients and their assigned doctors.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The patient navigates to the 'Secure Messaging' section, typically from the Patient Dashboard or a navigation menu.",
+    "_uid_" : "A.0.101.102"
+  }, {
+    "value" : "The patient views a list of their ongoing conversations with doctors.",
+    "_uid_" : "A.0.101.103"
+  }, {
+    "value" : "The patient can start a new conversation by selecting a doctor from a list of their assigned doctors.",
+    "_uid_" : "A.0.101.104"
+  }, {
+    "value" : "The patient types their message into a text input field.",
+    "_uid_" : "A.0.101.105"
+  }, {
+    "value" : "The patient clicks 'Send' to transmit the message.",
+    "_uid_" : "A.0.101.106"
+  }, {
+    "value" : "The patient can view the conversation history and any replies from the doctor.",
+    "_uid_" : "A.0.101.107"
+  } ],
+  "roles" : [ "patient" ],
+  "_uid_" : "A.0.256"
+}, {
+  "id" : "manageConsentPreferences",
+  "title" : "Manage Consent Preferences",
+  "description" : "Allows patients to manage their consent preferences for data usage and privacy policies, and exercise their rights for data access, correction, or deletion.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The patient navigates to the 'Consent Management' or 'Privacy Settings' section, typically from their profile or a dedicated menu item.",
+    "_uid_" : "A.0.108.109"
+  }, {
+    "value" : "The patient views a list of consent types (e.g., data sharing, marketing communications, research participation).",
+    "_uid_" : "A.0.108.110"
+  }, {
+    "value" : "For each consent type, the patient can see their current preference (granted/denied).",
+    "_uid_" : "A.0.108.111"
+  }, {
+    "value" : "The patient can modify their consent preferences by toggling options or selecting choices.",
+    "_uid_" : "A.0.108.112"
+  }, {
+    "value" : "The patient can initiate a request for data access, correction, or deletion through a dedicated form or button.",
+    "_uid_" : "A.0.108.113"
+  }, {
+    "value" : "The patient reviews and confirms their updated consent preferences or data request.",
+    "_uid_" : "A.0.108.114"
+  }, {
+    "value" : "The system confirms the successful update or submission of the request.",
+    "_uid_" : "A.0.108.115"
+  } ],
+  "roles" : [ "patient" ],
+  "_uid_" : "A.0.263"
+}, {
+  "id" : "doctorDashboard",
+  "title" : "Doctor Dashboard Overview",
+  "description" : "Provides doctors with a central hub to manage their schedule, access patient EHRs, track appointment requests, and communicate with patients.",
+  "landingScenario" : true,
+  "steps" : [ {
+    "value" : "Login leads to Doctor Dashboard scenario. If the doctor has multiple roles, they select 'doctor' role from the role selection screen.",
+    "_uid_" : "A.0.116.117"
+  }, {
+    "value" : "The doctor views a summary of their upcoming appointments.",
+    "_uid_" : "A.0.116.118"
+  }, {
+    "value" : "The doctor sees a summary of pending appointment requests.",
+    "_uid_" : "A.0.116.119"
+  }, {
+    "value" : "The doctor views recent messages from patients.",
+    "_uid_" : "A.0.116.120"
+  }, {
+    "value" : "The doctor can navigate to Schedule Management, Patient EHRs, Appointment Requests, or Secure Messaging modules using a navigation menu or dashboard widgets.",
+    "_uid_" : "A.0.116.121"
+  } ],
+  "roles" : [ "doctor" ],
+  "_uid_" : "A.0.271"
+}, {
+  "id" : "manageDoctorSchedule",
+  "title" : "Manage Clinical Schedule",
+  "description" : "Allows doctors to define their availability, set working hours, and view their daily/weekly schedules.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The doctor navigates to the 'Schedule Management' module from the Doctor Dashboard.",
+    "_uid_" : "A.0.122.123"
+  }, {
+    "value" : "The doctor views their current calendar, showing scheduled appointments and blocked times.",
+    "_uid_" : "A.0.122.124"
+  }, {
+    "value" : "The doctor can set or modify their working hours for specific days or a range of dates.",
+    "_uid_" : "A.0.122.125"
+  }, {
+    "value" : "The doctor can block out specific time slots for personal reasons or unavailability.",
+    "_uid_" : "A.0.122.126"
+  }, {
+    "value" : "The doctor can view their schedule in daily, weekly, or monthly formats.",
+    "_uid_" : "A.0.122.127"
+  } ],
+  "roles" : [ "doctor" ],
+  "_uid_" : "A.0.277"
+}, {
+  "id" : "viewUpdatePatientEHR",
+  "title" : "View and Update Patient Electronic Health Records (EHR)",
+  "description" : "Enables doctors to securely access and update the Electronic Health Records of their assigned patients, including adding notes, diagnoses, and treatment plans.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The doctor navigates to the 'Patient EHR' module from the Doctor Dashboard or selects a patient from an appointment.",
+    "_uid_" : "A.0.128.129"
+  }, {
+    "value" : "The doctor searches for a specific patient or selects one from a list of their assigned patients.",
+    "_uid_" : "A.0.128.130"
+  }, {
+    "value" : "The doctor views the patient's comprehensive medical record, including past visits, diagnoses, treatments, and lab results.",
+    "_uid_" : "A.0.128.131"
+  }, {
+    "value" : "The doctor can add new notes, diagnoses, or treatment plans to the patient's EHR.",
+    "_uid_" : "A.0.128.132"
+  }, {
+    "value" : "The doctor can update existing entries in the patient's EHR.",
+    "_uid_" : "A.0.128.133"
+  }, {
+    "value" : "The doctor saves the changes to the patient's EHR.",
+    "_uid_" : "A.0.128.134"
+  }, {
+    "value" : "The system confirms the successful update and potentially triggers external EHR synchronization.",
+    "_uid_" : "A.0.128.135"
+  } ],
+  "roles" : [ "doctor" ],
+  "_uid_" : "A.0.283"
+}, {
+  "id" : "trackRespondAppointmentRequests",
+  "title" : "Track and Respond to Patient Appointment Requests",
+  "description" : "Allows doctors to review and act upon pending appointment requests from patients, including approving or declining them.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The doctor navigates to the 'Appointment Requests' module from the Doctor Dashboard.",
+    "_uid_" : "A.0.136.137"
+  }, {
+    "value" : "The doctor views a list of pending appointment requests from patients.",
+    "_uid_" : "A.0.136.138"
+  }, {
+    "value" : "For each request, the doctor can view details such as patient name, requested date/time, and reason for visit.",
+    "_uid_" : "A.0.136.139"
+  }, {
+    "value" : "The doctor can choose to approve the appointment request, confirming the time slot.",
+    "_uid_" : "A.0.136.140"
+  }, {
+    "value" : "The doctor can choose to decline the appointment request, optionally providing a reason or suggesting alternative times.",
+    "_uid_" : "A.0.136.141"
+  }, {
+    "value" : "The system sends a notification to the patient regarding the doctor's decision.",
+    "_uid_" : "A.0.136.142"
+  } ],
+  "roles" : [ "doctor" ],
+  "_uid_" : "A.0.291"
+}, {
+  "id" : "secureDoctorPatientMessaging",
+  "title" : "Secure Doctor-Patient Messaging",
+  "description" : "Provides a secure, encrypted, and auditable messaging channel for confidential communication between doctors and their assigned patients.",
+  "landingScenario" : false,
+  "steps" : [ {
+    "value" : "The doctor navigates to the 'Secure Messaging' module from the Doctor Dashboard.",
+    "_uid_" : "A.0.143.144"
+  }, {
+    "value" : "The doctor views a list of their ongoing conversations with patients.",
+    "_uid_" : "A.0.143.145"
+  }, {
+    "value" : "The doctor can start a new conversation by selecting a patient from their assigned patient list.",
+    "_uid_" : "A.0.143.146"
+  }, {
+    "value" : "The doctor types their message into a text input field.",
+    "_uid_" : "A.0.143.147"
+  }, {
+    "value" : "The doctor can attach relevant files or medical records to the message (if applicable).",
+    "_uid_" : "A.0.143.148"
+  }, {
+    "value" : "The doctor clicks 'Send' to transmit the message.",
+    "_uid_" : "A.0.143.149"
+  }, {
+    "value" : "The doctor can view the conversation history and any replies from the patient.",
+    "_uid_" : "A.0.143.150"
+  } ],
+  "roles" : [ "doctor" ],
+  "_uid_" : "A.0.298"
+}, {
+  "id" : "roleSelection",
+  "title" : "Select Application Role",
+  "description" : "Allows an authenticated user who has been assigned multiple application roles (e.g., patient, doctor) to select which role they want to operate under for the current session.",
+  "landingScenario" : true,
+  "steps" : [ {
+    "value" : "Login leads to Role Selection scenario if the authenticated user has been assigned multiple application roles.",
+    "_uid_" : "A.0.151.152"
+  }, {
+    "value" : "The user is presented with a list of their assigned application roles (e.g., 'Patient', 'Doctor').",
+    "_uid_" : "A.0.151.153"
+  }, {
+    "value" : "The user selects one of the available roles.",
+    "_uid_" : "A.0.151.154"
+  }, {
+    "value" : "Upon selection, the user is redirected to the landing page specific to the chosen role (e.g., Patient Dashboard, Doctor Dashboard).",
+    "_uid_" : "A.0.151.155"
+  } ],
+  "roles" : [ "user" ],
+  "_uid_" : "A.0.306"
+} ]

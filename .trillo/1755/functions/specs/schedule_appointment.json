@@ -1,0 +1,9 @@
+{
+  "name" : "scheduleAppointment",
+  "shortDescription" : "Schedules a new patient appointment, checking doctor availability, validating time slots, and creating the Appointment record.",
+  "description" : "<h4>Overview</h4><p>Schedules a new medical appointment for a patient, including availability checks and record creation, and sends notifications.</p><h4>Intended use</h4><p>Called by the patient-facing UI when a patient requests an appointment. The UI sends parameters such as <code>patientId</code>, <code>doctorId</code>, <code>appointmentDateTime</code>, and <code>reason</code>.</p><h4>Logic</h4><ol><li>Retrieve the <code>Doctor</code> entity using <code>params.doctorId</code> to access their <code>availabilitySchedule</code>.</li><li>Check if the requested <code>appointmentDateTime</code> falls within the doctor's <code>availabilitySchedule</code> and is not already booked by another <code>Appointment</code>.</li><li>If the time slot is available, create a new <code>Appointment</code> record using <code>ctx.data.create</code> with the provided <code>patientId</code>, <code>doctorId</code>, <code>appointmentDateTime</code>, <code>reason</code>, and set <code>status</code> to 'scheduled'.</li><li>Send a confirmation email to the patient using <code>ctx.email.send_template</code> with relevant appointment details.</li><li>Audit-log the appointment creation using <code>ctx.audit.log</code>, including the appointment ID and participants.</li><li>Return the newly created <code>Appointment</code> record.</li></ol><h4>Entities</h4><ul><li>Appointment</li><li>Doctor</li><li>Patient</li></ul>",
+  "invocationMode" : "http",
+  "role" : "patient",
+  "allowedAppRoles" : [ "patient" ],
+  "functionName" : "schedule_appointment"
+}

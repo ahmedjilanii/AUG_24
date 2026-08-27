@@ -1,0 +1,9 @@
+{
+  "name" : "manageHospitalSettings",
+  "shortDescription" : "Allows administrators to update and manage hospital-specific configuration settings and policies.",
+  "description" : "<h4>Overview</h4><p>Provides functionality for administrators to configure hospital-wide settings such as operating hours, holidays, and general policies.</p><h4>Intended use</h4><p>Called by the admin-facing UI when an administrator modifies hospital settings. It receives parameters like <code>settingName</code> and <code>settingValue</code>.</p><h4>Logic</h4><ol><li>Validate the incoming <code>params</code> for <code>settingName</code> and <code>settingValue</code> to ensure data integrity.</li><li>Update the <code>HospitalSetting</code> record using <code>ctx.data.upsert</code> (or <code>ctx.data.update</code> if the setting already exists based on <code>settingName</code>).</li><li>Audit-log the setting change using <code>ctx.audit.log</code>, detailing which setting was changed and by whom.</li><li>Return the updated <code>HospitalSetting</code> record.</li></ol><h4>Entities</h4><ul><li>HospitalSetting</li></ul>",
+  "invocationMode" : "http",
+  "role" : "admin",
+  "allowedAppRoles" : [ "admin" ],
+  "functionName" : "manage_hospital_settings"
+}

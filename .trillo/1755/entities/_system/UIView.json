@@ -1,0 +1,118 @@
+{
+  "name" : "UIView",
+  "description" : "Adaptive-UI View (plan-38/43, WS1). One deterministically-served UI surface — a nav-sidebar entry, a content page, or a modal/overlay. Design-time authored in Trillo AI (TrilloMD row with modelClassName=\"UIView\"), versioned + GitHub-syncable + promotable; the deploy flattens each authored content blob into this queryable per-app table via DeployAppMetadata.bootstrapUIViews (upsert by uid, reconcile orphans). AOS serves it read-only via the /ui/* serve-API (role-scoped) — no LLM at render time. Flattened columns (uid/role/appRoles/placement/parentUID/order) are queried/served; spec/bindings are JSON payload resolved by the frontend renderer. dataApi: open + admin read-only ACL keeps generic CRUD off (edits happen in Trillo AI, ship via redeploy); the serve-API reads via raised-privilege DataStore. A Flow's views = UIView WHERE parentUID = flow.uid.",
+  "dataApi" : "open",
+  "ownership" : "none",
+  "systemClass" : true,
+  "acl" : {
+    "admin" : [ "read" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "tenantId",
+    "type" : "biginteger",
+    "defaultValue" : "-1",
+    "indexed" : true,
+    "persistent" : true,
+    "systemAttr" : true,
+    "platform" : true
+  }, {
+    "name" : "uid",
+    "type" : "string",
+    "length" : 100,
+    "indexed" : true,
+    "persistent" : true,
+    "description" : "Stable identifier for this View — the deploy upsert key and the reference target for UIView.parentUID / UIFlow.entryViewUid. Equals the authoring TrilloMD row's name. Composite unique on (tenantId, uid), enforced at the application layer.",
+    "platform" : true
+  }, {
+    "name" : "title",
+    "type" : "string",
+    "length" : 200,
+    "persistent" : true,
+    "description" : "Human-facing label (sidebar text / page heading).",
+    "platform" : true
+  }, {
+    "name" : "role",
+    "type" : "string",
+    "length" : 30,
+    "indexed" : true,
+    "persistent" : true,
+    "description" : "Primary serving key — the role this View is served to. The role sidebar is fetched by this (one navigation View per role). Holds the coarse exec role (guest/user/admin/system) or an app role name; the serve-API filters on it.",
+    "platform" : true
+  }, {
+    "name" : "appRoles",
+    "type" : "text",
+    "persistent" : true,
+    "description" : "Optional JSON array of additional app-role names this View is also served to (secondary gate beyond `role`). V1 filters primarily on `role`; appRoles membership is resolved by the serve-API when set.",
+    "platform" : true
+  }, {
+    "name" : "placement",
+    "type" : "string",
+    "length" : 20,
+    "enumValues" : "navigation,content,modal,overlay",
+    "indexed" : true,
+    "persistent" : true,
+    "description" : "Where this View renders. navigation = a role's sidebar entry (the bootstrap surface); content = a routed page; modal/overlay = transient surfaces driven by a Flow.",
+    "platform" : true
+  }, {
+    "name" : "parentUID",
+    "type" : "string",
+    "length" : 100,
+    "indexed" : true,
+    "persistent" : true,
+    "description" : "The owning UIFlow.uid when this View is a step of a flow; null for a standalone View. Flat linkage — no nested Views.",
+    "platform" : true
+  }, {
+    "name" : "sortOrder",
+    "type" : "biginteger",
+    "defaultValue" : "0",
+    "persistent" : true,
+    "description" : "Sort order within its placement group (e.g. position in a role's sidebar) or within its parent flow. Named sortOrder (not 'order') to avoid the SQL reserved word.",
+    "platform" : true
+  }, {
+    "name" : "icon",
+    "type" : "string",
+    "length" : 100,
+    "persistent" : true,
+    "description" : "Optional icon name for a navigation View. Nullable.",
+    "platform" : true
+  }, {
+    "name" : "spec",
+    "type" : "text",
+    "persistent" : true,
+    "description" : "JSON payload — the A2UISpec for this View (the component tree the frontend renders deterministically). Not queried; carried opaque to the renderer.",
+    "platform" : true
+  }, {
+    "name" : "bindings",
+    "type" : "text",
+    "persistent" : true,
+    "description" : "JSON payload — data bindings the frontend resolves on load by calling the app's existing data/fn APIs (bindings resolution is frontend, not part of the serve-API). Not queried.",
+    "platform" : true
+  } ]
+}

@@ -1,0 +1,92 @@
+{
+  "name" : "Message",
+  "description" : "Represents a secure, auditable message exchanged between a patient and a doctor.",
+  "ownership" : "user",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "doctor" : [ "create", "read", "update" ],
+    "patient" : [ "create", "read", "update" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "idOfUser",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "representsOwnership" : true,
+    "createOnly" : true,
+    "description" : "Owning user (patient) of the conversation — set automatically on create from the authenticated patient; only the patient or an admin/doctor involved in the conversation may read or update messages."
+  }, {
+    "name" : "senderId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "description" : "The ID of the user (patient or doctor) who sent the message."
+  }, {
+    "name" : "receiverId",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "description" : "The ID of the user (patient or doctor) who received the message."
+  }, {
+    "name" : "conversationId",
+    "type" : "string",
+    "length" : 36,
+    "required" : true,
+    "indexed" : true,
+    "description" : "A unique identifier for the conversation thread."
+  }, {
+    "name" : "timestamp",
+    "type" : "timestamptz",
+    "required" : true,
+    "indexed" : true,
+    "description" : "The timestamp when the message was sent."
+  }, {
+    "name" : "content",
+    "type" : "text",
+    "required" : true,
+    "pii" : true,
+    "phi" : true,
+    "encrypt" : true,
+    "sensitive" : true,
+    "listHidden" : true,
+    "description" : "The encrypted content of the message."
+  }, {
+    "name" : "isRead",
+    "type" : "boolean",
+    "indexed" : true,
+    "defaultValue" : false,
+    "description" : "Indicates if the message has been read by the receiver."
+  }, {
+    "name" : "isEncrypted",
+    "type" : "boolean",
+    "defaultValue" : true,
+    "description" : "Indicates if the message content is encrypted."
+  } ]
+}

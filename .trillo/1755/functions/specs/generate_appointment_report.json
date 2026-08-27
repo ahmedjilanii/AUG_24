@@ -1,0 +1,9 @@
+{
+  "name" : "generateAppointmentReport",
+  "shortDescription" : "Generates a comprehensive report on appointment activities, including metrics like cancellations and doctor utilization.",
+  "description" : "<h4>Overview</h4><p>Compiles and generates a detailed report on various appointment activities and metrics for administrative review, based on specified filters.</p><h4>Intended use</h4><p>Called by the admin-facing reporting UI when an administrator requests an appointment report. Optional parameters include date ranges, doctor IDs, and appointment statuses.</p><h4>Logic</h4><ol><li>Query <code>Appointment</code> entities using <code>ctx.data.query</code> based on provided filters (e.g., date range, <code>doctorId</code>, <code>status</code>).</li><li>Aggregate the retrieved data to calculate metrics such as total appointments, confirmed appointments, cancelled appointments, and doctor utilization rates.</li><li>Optionally, retrieve associated <code>Patient</code> and <code>Doctor</code> details for richer reporting context.</li><li>Format the aggregated data into a structured report (e.g., JSON object).</li><li>Return the generated report data.</li></ol><h4>Entities</h4><ul><li>Appointment</li><li>Patient</li><li>Doctor</li></ul>",
+  "invocationMode" : "http",
+  "role" : "admin",
+  "allowedAppRoles" : [ "admin" ],
+  "functionName" : "generate_appointment_report"
+}

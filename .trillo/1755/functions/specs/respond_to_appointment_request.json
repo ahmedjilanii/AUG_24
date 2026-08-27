@@ -1,0 +1,9 @@
+{
+  "name" : "respondToAppointmentRequest",
+  "shortDescription" : "Allows a doctor to approve or decline a pending appointment request from a patient.",
+  "description" : "<h4>Overview</h4><p>Enables doctors to review and respond to pending appointment requests from patients, either approving or declining them, and notifying the patient.</p><h4>Intended use</h4><p>Called by the doctor-facing UI when a doctor processes an appointment request. It requires <code>appointmentId</code> and an <code>action</code> (e.g., 'approve', 'decline').</p><h4>Logic</h4><ol><li>Retrieve the <code>Appointment</code> record using <code>params.appointmentId</code>.</li><li>Verify that the authenticated user is the doctor associated with the appointment.</li><li>Based on <code>params.action</code> ('approve' or 'decline'):<ul><li>If 'approve': Update <code>Appointment.status</code> to 'confirmed' using <code>ctx.data.update</code>.</li><li>If 'decline': Update <code>Appointment.status</code> to 'declined' and optionally add <code>notes</code> using <code>ctx.data.update</code>.</li></ul></li><li>Send a notification email to the patient about the decision using <code>ctx.email.send_template</code>.</li><li>Audit-log the doctor's response to the appointment request using <code>ctx.audit.log</code>.</li><li>Return the updated <code>Appointment</code> record.</li></ol><h4>Entities</h4><ul><li>Appointment</li><li>Patient</li><li>Doctor</li></ul>",
+  "invocationMode" : "http",
+  "role" : "doctor",
+  "allowedAppRoles" : [ "doctor" ],
+  "functionName" : "respond_to_appointment_request"
+}

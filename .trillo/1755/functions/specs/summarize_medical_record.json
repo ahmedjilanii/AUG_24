@@ -1,0 +1,9 @@
+{
+  "name" : "summarizeMedicalRecord",
+  "shortDescription" : "Generates a summary of a patient's medical record, extracting key information like diagnoses and treatment plans.",
+  "description" : "<h4>Overview</h4><p>Provides a concise summary of a patient's <code>MedicalRecord</code> or specific visit summaries, highlighting critical information such as diagnoses, medications, and treatment plans.</p><h4>Intended use</h4><p>Called by the doctor-facing UI to quickly review patient history or by the patient-facing UI to understand their records. It requires <code>patientId</code> and optionally a specific <code>medicalRecordId</code>.</p><h4>Logic</h4><ol><li>Retrieve relevant <code>MedicalRecord</code> entries for a given <code>params.patientId</code> using <code>ctx.data.query</code>. If a specific <code>medicalRecordId</code> is provided, retrieve only that entry.</li><li>Concatenate or process the <code>content</code> of the retrieved <code>MedicalRecord</code> entries.</li><li>(Hypothetical AI step): Utilize an internal AI service (e.g., <code>ctx.ai.summarize</code>) to extract key information and generate a coherent summary from the processed content.</li><li>Return the generated summary text.</li></ol><h4>Entities</h4><ul><li>MedicalRecord</li><li>Patient</li></ul>",
+  "invocationMode" : "http",
+  "role" : "user",
+  "allowedAppRoles" : [ "doctor", "patient" ],
+  "functionName" : "summarize_medical_record"
+}

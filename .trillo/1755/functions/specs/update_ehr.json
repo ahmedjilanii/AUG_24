@@ -1,0 +1,9 @@
+{
+  "name" : "updateEHR",
+  "shortDescription" : "Allows a doctor to securely update a patient's Electronic Health Record, ensuring data integrity and compliance.",
+  "description" : "<h4>Overview</h4><p>Enables doctors to update a patient's Electronic Health Record (EHR) by adding notes, diagnoses, or treatment plans, and may trigger external synchronization.</p><h4>Intended use</h4><p>Called by the doctor-facing UI when a doctor submits changes to a patient's EHR. The UI provides parameters such as <code>medicalRecordId</code>, <code>content</code>, <code>recordType</code>, <code>diagnosisCode</code>, and <code>treatmentPlan</code>.</p><h4>Logic</h4><ol><li>Retrieve the <code>MedicalRecord</code> entity using <code>params.medicalRecordId</code>.</li><li>Verify that the authenticated doctor is authorized to update this record (e.g., by checking <code>doctorId</code> in the record or assignment to the <code>Patient</code>).</li><li>Update the <code>MedicalRecord</code>'s <code>content</code>, <code>recordType</code>, <code>diagnosisCode</code>, and <code>treatmentPlan</code> using <code>ctx.data.update</code>.</li><li>Audit-log the EHR update using <code>ctx.audit.log</code>, capturing the changes made and the doctor responsible.</li><li>Optionally, trigger external synchronization with the <code>EHRSystem</code> if configured.</li><li>Return the updated <code>MedicalRecord</code>.</li></ol><h4>Entities</h4><ul><li>MedicalRecord</li><li>Patient</li><li>Doctor</li></ul><h4>External Services</h4><ul><li>EHRSystem</li></ul>",
+  "invocationMode" : "http",
+  "role" : "doctor",
+  "allowedAppRoles" : [ "doctor" ],
+  "functionName" : "update_ehr"
+}

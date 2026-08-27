@@ -1,0 +1,9 @@
+{
+  "name" : "answerPatientFAQ",
+  "shortDescription" : "Provides answers to common patient questions based on hospital policies and a knowledge base.",
+  "description" : "<h4>Overview</h4><p>Responds to frequently asked patient questions by querying hospital policies, general medical information, or a dedicated knowledge base.</p><h4>Intended use</h4><p>Called by the patient-facing UI or a patient-facing chatbot to provide instant answers. It receives the <code>question</code> asked by the patient.</p><h4>Logic</h4><ol><li>Retrieve relevant <code>HospitalSetting</code> data for general policies and operational information.</li><li>Query the <code>KnowledgeContainer</code> for relevant FAQs or medical information based on the <code>params.question</code>.</li><li>(Hypothetical AI step): Utilize an internal AI service (e.ai., <code>ctx.ai.answer_question</code>) to process the question and retrieved information to formulate a coherent answer.</li><li>Return the generated answer to the patient's question.</li></ol><h4>Entities</h4><ul><li>HospitalSetting</li><li>KnowledgeContainer</li></ul>",
+  "invocationMode" : "http",
+  "role" : "patient",
+  "allowedAppRoles" : [ "patient" ],
+  "functionName" : "answer_patient_faq"
+}

@@ -1,0 +1,9 @@
+{
+  "name" : "analyzeAppointmentTrends",
+  "shortDescription" : "Analyzes appointment data to identify trends, such as peak hours, common reasons for visits, or cancellation rates.",
+  "description" : "<h4>Overview</h4><p>Performs analytical processing on <code>Appointment</code> data to uncover trends, patterns, and insights useful for administrative decision-making.</p><h4>Intended use</h4><p>Called by the admin-facing analytics dashboard to populate charts and reports. It can receive optional parameters for date ranges or specific doctor IDs.</p><h4>Logic</h4><ol><li>Query <code>Appointment</code> entities for a specified period using <code>ctx.data.query</code>.</li><li>Group and count appointments by various criteria such as <code>appointmentDateTime</code> (for peak hours), <code>reason</code> (for common visit types), or <code>status</code> (for cancellation rates).</li><li>Optionally, retrieve <code>Doctor</code> data to analyze doctor utilization and performance.</li><li>Calculate statistical metrics and identify significant trends from the aggregated data.</li><li>Return the aggregated analytical data in a structured format.</li></ol><h4>Entities</h4><ul><li>Appointment</li><li>Doctor</li></ul>",
+  "invocationMode" : "http",
+  "role" : "admin",
+  "allowedAppRoles" : [ "admin" ],
+  "functionName" : "analyze_appointment_trends"
+}

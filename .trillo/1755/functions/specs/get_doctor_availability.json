@@ -1,0 +1,9 @@
+{
+  "name" : "getDoctorAvailability",
+  "shortDescription" : "Retrieves a doctor's availability schedule, considering their set working hours and existing appointments.",
+  "description" : "<h4>Overview</h4><p>Fetches the detailed availability schedule for a specified doctor, taking into account their configured working hours and any pre-existing appointments.</p><h4>Intended use</h4><p>Called by the patient-facing UI during appointment scheduling or by the doctor-facing UI for schedule review. It requires <code>doctorId</code> and an optional date range.</p><h4>Logic</h4><ol><li>Retrieve the <code>Doctor</code> entity using <code>params.doctorId</code>.</li><li>Parse the <code>Doctor.availabilitySchedule</code> (expected to be in JSON format) to determine the doctor's base working hours.</li><li>Query <code>Appointment</code> entities for the specified <code>doctorId</code> within a given date range (e.g., next two weeks) using <code>ctx.data.query</code>, filtering by <code>status</code> not equal to 'cancelled'.</li><li>Cross-reference the doctor's base availability with the existing appointments to identify and mark free and booked time slots.</li><li>Return a structured list of available and unavailable time slots.</li></ol><h4>Entities</h4><ul><li>Doctor</li><li>Appointment</li></ul>",
+  "invocationMode" : "http",
+  "role" : "user",
+  "allowedAppRoles" : [ "patient", "doctor" ],
+  "functionName" : "get_doctor_availability"
+}

@@ -1,0 +1,98 @@
+{
+  "name" : "Doctor",
+  "description" : "Represents a medical doctor practicing at the hospital.",
+  "acl" : {
+    "admin" : [ "create", "read", "update", "delete" ],
+    "doctor" : [ "read", "update" ],
+    "patient" : [ "read" ]
+  },
+  "attributes" : [ {
+    "name" : "id",
+    "type" : "biginteger",
+    "persistent" : true,
+    "primaryKey" : true,
+    "systemAttr" : true,
+    "autoSequence" : true
+  }, {
+    "name" : "createdAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "updatedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deleted",
+    "type" : "boolean",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "deletedAt",
+    "type" : "biginteger",
+    "persistent" : true,
+    "systemAttr" : true
+  }, {
+    "name" : "idOfUser",
+    "type" : "long",
+    "required" : true,
+    "indexed" : true,
+    "unique" : true,
+    "description" : "Foreign key to the platform User entity representing this doctor. Ensures a 1:1 relationship between a platform user and a doctor profile."
+  }, {
+    "name" : "firstName",
+    "type" : "string",
+    "length" : 100,
+    "required" : true,
+    "naming" : true,
+    "searchable" : true,
+    "pii" : true,
+    "description" : "The doctor's first name."
+  }, {
+    "name" : "lastName",
+    "type" : "string",
+    "length" : 100,
+    "required" : true,
+    "naming" : true,
+    "searchable" : true,
+    "pii" : true,
+    "description" : "The doctor's last name."
+  }, {
+    "name" : "specialty",
+    "type" : "string",
+    "length" : 100,
+    "required" : true,
+    "indexed" : true,
+    "searchable" : true,
+    "description" : "The medical specialty of the doctor."
+  }, {
+    "name" : "email",
+    "type" : "string",
+    "length" : 255,
+    "required" : true,
+    "unique" : true,
+    "pii" : true,
+    "pattern" : "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$",
+    "description" : "The doctor's email address."
+  }, {
+    "name" : "phoneNumber",
+    "type" : "string",
+    "length" : 20,
+    "pii" : true,
+    "description" : "The doctor's phone number."
+  }, {
+    "name" : "availabilitySchedule",
+    "type" : "text",
+    "listHidden" : true,
+    "description" : "JSON representation of the doctor's weekly availability schedule."
+  }, {
+    "name" : "status",
+    "type" : "string",
+    "length" : 50,
+    "indexed" : true,
+    "enumValues" : "active,inactive,on_leave",
+    "defaultValue" : "active",
+    "description" : "The current employment status of the doctor."
+  } ]
+}

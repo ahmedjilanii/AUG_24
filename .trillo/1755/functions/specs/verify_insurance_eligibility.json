@@ -1,0 +1,9 @@
+{
+  "name" : "verifyInsuranceEligibility",
+  "shortDescription" : "Verifies a patient's insurance eligibility with an external insurance platform.",
+  "description" : "<h4>Overview</h4><p>Checks a patient's insurance eligibility and coverage details with an external insurance provider platform.</p><h4>Intended use</h4><p>Called by the patient-facing UI during registration or appointment scheduling, or by an admin for billing purposes. It requires patient identification and insurance details.</p><h4>Logic</h4><ol><li>Retrieve <code>Patient</code> details (e.g., <code>firstName</code>, <code>lastName</code>, <code>dateOfBirth</code>) and insurance information from <code>params</code>.</li><li>Connect to the <code>InsurancePlatform</code> external service using <code>ctx.service('InsurancePlatform')</code>.</li><li>Send a request to the insurance platform's API to verify eligibility based on the collected patient and insurance data.</li><li>Parse the response from the external service to determine eligibility status and coverage details.</li><li>Return the eligibility status and any relevant details (e.g., co-pay, deductible).</li><li>Audit-log the insurance verification attempt and its outcome using <code>ctx.audit.log</code>.</li></ol><h4>Entities</h4><ul><li>Patient</li></ul><h4>External Services</h4><ul><li>InsurancePlatform</li></ul>",
+  "invocationMode" : "http",
+  "role" : "user",
+  "allowedAppRoles" : [ "patient", "admin" ],
+  "functionName" : "verify_insurance_eligibility"
+}

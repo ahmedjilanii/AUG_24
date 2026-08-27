@@ -1,0 +1,9 @@
+{
+  "name" : "sendMessageWebhook",
+  "shortDescription" : "Sends a webhook notification to external systems when a new secure message is sent.",
+  "description" : "<h4>Overview</h4><p>Dispatches webhook notifications to external systems whenever a new secure <code>Message</code> is sent between a patient and a doctor.</p><h4>Intended use</h4><p>Invoked as an event handler whenever a <code>Message</code> record is created or updated. It receives the relevant <code>Message</code> data.</p><h4>Logic</h4><ol><li>Construct a payload containing relevant <code>Message</code> data (e.g., sender, receiver, conversation ID, timestamp, but excluding sensitive content unless explicitly configured) and the event type (e.g., 'message.created').</li><li>Call the <code>Webhook</code> external service using <code>ctx.service('Webhook').send</code> to dispatch the notification to configured endpoints.</li><li>Log the webhook delivery attempt and status (success/failure) using <code>ctx.audit.log</code>.</li></ol><h4>Entities</h4><ul><li>Message</li></ul><h4>External Services</h4><ul><li>Webhook</li></ul>",
+  "invocationMode" : "event",
+  "role" : "system",
+  "allowedAppRoles" : [ "system" ],
+  "functionName" : "send_message_webhook"
+}

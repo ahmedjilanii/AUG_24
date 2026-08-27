@@ -1,0 +1,9 @@
+{
+  "name" : "draftMedicalNote",
+  "shortDescription" : "Assists doctors in drafting medical notes for a patient's EHR based on provided symptoms and history.",
+  "description" : "<h4>Overview</h4><p>Aids doctors in composing medical notes for a patient's EHR by leveraging patient history, symptoms, and observations to suggest content.</p><h4>Intended use</h4><p>Called by the doctor-facing UI as an AI-assist tool during patient consultations or EHR updates. It receives <code>patientId</code>, <code>symptoms</code>, and <code>observations</code>.</p><h4>Logic</h4><ol><li>Retrieve relevant historical <code>MedicalRecord</code> and <code>Patient</code> data based on <code>params.patientId</code>.</li><li>Combine this historical data with the provided <code>params.symptoms</code> and <code>params.observations</code> to form a comprehensive context.</li><li>(Hypothetical AI step): Send this combined context to an internal AI service (e.g., <code>ctx.ai.generate_note</code>) to draft a preliminary medical note.</li><li>Return the drafted medical note content for the doctor to review, edit, and finalize.</li></ol><h4>Entities</h4><ul><li>MedicalRecord</li><li>Patient</li><li>Doctor</li></ul>",
+  "invocationMode" : "http",
+  "role" : "doctor",
+  "allowedAppRoles" : [ "doctor" ],
+  "functionName" : "draft_medical_note"
+}
